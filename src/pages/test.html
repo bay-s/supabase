@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    $list2 .="
+    <!--begin::Col-->
+                                   <div class='col-xl-12 border-gray-300 '>
+                                       <!--begin::Tables Widget 5-->
+                                       <div class='card card-xl-stretch mb-5 mb-xl-8 card shadow-sm'>
+                                           <!--begin::Header-->
+                                           <div class='card-header border-0 pt-5 '>
+                                                           <!--begin::Info-->
+                                                       <div class='d-flex flex-column flex-row-fluid'>
+                                                           <!--begin::Info-->
+                            
+                                                           <div class='d-flex align-items-center flex-wrap mb-1'>
+                                                               <span class='text-gray-900 text-hover-primary fs-3 fw-bold'>Paper ID: $paper_number</span>&nbsp;
+                                                           <span class='text-gray-600 fw-semibold fs-7'>  <i class='fas fa-calendar pe-2'></i>$date</span>
+                                                                <span class='text-gray-900 fw-normal fs-6'>   </span>
+                                                           </div>
+                                                           <div class='d-flex flex-column fs-6 s'>
+                                                                     <span class='text-gray-400  fw-bold'>$scope</span> 	
+                                                                <!--   <p>Type Author : <span class='fw-bold'>$publication</span></p>
+                                                                   <p>Publication: <span class='fw-bold'>$type_participant</span></p>-->
+                                                                   <p><b>$judul</b>  |  Publication: <b>$penulis</b></p>
+                                                                 <!--  <span class='text-gray-600 fw-semibold fs-7'><i class='fas fa-calendar pe-2'></i>$date</span>-->
+                                                           </div>
+                                                           <!--end::Info-->
+               
+                                                       </div>
+                                                       <!--end::Info CONTAINER-->
+                                                       
+                                                   </div>
+                                                   <!--end::User-->
+                                                   
+                                               <div class='card-toolbar'>
+                                                   <ul class='nav'>
+                                                       <li class='nav-item'>
+                                                           <a class='nav-link btn btn-sm btn-light-info btn-active btn-active-secondary fw-bold px-4 me-1 active' data-bs-toggle='tab' href='#kt_table_widget_5_tab_1_$id'>1. Submission</a>
+                                                       </li>
+                                                       <li class='nav-item'>
+                                                           <a class='nav-link btn btn-sm btn-light-info btn-active btn-active-secondary fw-bold px-4 me-1' data-bs-toggle='tab' href='#kt_table_widget_5_tab_2_$id'>2. Uploaded: </a>
+                                                       </li>
+                                                       <li class='nav-item'>
+                                                           <a class='nav-link btn btn-sm btn-light-info btn-active btn-active-secondary fw-bold px-4' data-bs-toggle='tab' href='#kt_table_widget_5_tab_3_$id'>3. Review</a>
+                                                       </li>
+                                                       <li class='nav-item'>
+                                                           <a class='nav-link btn btn-sm btn-light-info btn-active btn-active-secondary fw-bold px-4' data-bs-toggle='tab' href='#kt_table_widget_5_tab_4_$id'>4. History</a>
+                                                       </li>
+                                                   </ul>
+                                                   
+                                               </div>
+                                              
+                                               
+                                           </div>
+                                           <!--end::Header-->
+
+                                           <!--begin::Body-->
+                                           <div class='card-body py-3'>
+                                           
+                                            <!--begin::Post-->
+                                               <div class='mb-5 col-xl-12'>
+                                                   <!--begin::Text-->
+                                                   <span class='text-gray-800   fw-bold mb-5'>$judul </span>
+                                                   <p class='text-gray-800 fw-normal mb-5'>$penulis</p>
+                                                   
+                                                   <!--end::Text-->
+                                                   <!--begin::Toolbar-->
+                                                   <div class='d-flex align-items-center mb-5'>
+                                                   
+                                                   
+                                                   </div>
+                                                   <!--end::Toolbar-->
+                                               </div>
+                                               <!--end::Post-->
+                                               <hr>
+                                               <div class='tab-content'>
+
+                                                
+                                                <!--BEGIN TAB:: TAB 1--> 
+                                                   <!--begin::Tap pane-->
+                                                   <div class='tab-pane fade show active' id='kt_table_widget_5_tab_1_$id'>
+                                                       <!--begin::Table container-->
+                                                           <div class='col-md-12'>
+                                                           <div class='fullwidth '>
+                                                               <div class=''>
+                                                                 <ul class='progress-tracker progress-tracker--center'>
+                                                                   <li class='progress-step is-complete'>
+                                                                     <div class='progress-marker'>1</div>
+                                                                     <div class='progress-text '>
+                                                                           <h5 class='text-dark fs-7'>Abstract Submission</h5>
+                                                                         <div class='d-flex flex-column gap-3'>
+                                                                          $link_abs $btn_revisi_file_abstract
+                                                                          </div>
+                                                                      </div>
+                                                                   </li>
+                                                                   <li class='progress-step $status_bar_review'>
+                                                                     <div class='progress-marker'>2</div>
+                                                                                    <div class='progress-text '>
+                                                                           <h5 class='text-dark fs-7'>Abstract Review</h5>
+                                                                         <div class=''>$comment</div>
+                                                                       <div class='progress-text '>
+                                                                         <div class='d-flex flex-column gap-3 text-center justify-content-center'>
+                                                                         <p class='badge badge-secondary mx-auto p-2'>$status</p> 
+                                                                         <p class='fw-semibold text-dark fs-6  p-0 m-0'>$date_review</p>
+                                                                          </div> 
+                                                                      </div>
+                                                                   </li>
+                                                                   <li class='progress-step $status_bar_accepted'>
+                                                                     <div class='progress-marker'>3</div>
+                                                                          <div class='progress-text '>
+                                                                                 <h5 class='text-dark text-center mt-5 fs-7 fw-bold'>Decision: $status_abstract</h5>
+                                                                                         </div>
+                                                                   </li>
+                                                                   <li class='progress-step $status_bar_payment'>
+                                                                     <div class='progress-marker'>4</div>
+                                                                                    <div class='progress-text'>
+                                                                           <h5 class='fw-bold text-darky fs-7 d-flex flex-column text-center'>Payment  $status_payment </h5>
+                                                                           $date_payment
+                                                                            Payment information click <a href='?mod=author&content=payment_cekout' target='_BLANK'>here</a>
+                                                                         </div>
+                                                                   </li>
+                                                                   <li class='progress-step $status_bar_loa'>
+                                                                     <div class='progress-marker'><i class='fas fa fa-check'></i></div>
+                                                                     <div class='progress-text'>
+                                                                           <h5 class='fs-7 '>Download Acceptance Letter (LoA)</h5>
+                                                                     $download_loa
+                                                                     </div>
+                                                                   </li>
+                                                                 </ul>
+                                                               </div>
+                                                             </div>
+                                                                     </div>
+                                                       <!--end::Table-->
+                                                   </div>
+                                                   <!--end::Tap pane-->
+                                                <!--END TAB:: TAB 1-->  
+                                                
+                                                <!--BEGIN TAB:: TAB 2-->  
+                                                   <!--begin::Tap pane-->
+                                                   <div class='tab-pane fade' id='kt_table_widget_5_tab_2_$id'>
+                                                       <!--begin::Table container-->
+                                                       <div class='col' >  
+<h5><b>Fullpaper  Submission</b></h5>  <br>
+<div class='table-responsive'>
+<table cellpadding='0' style='font-size:10pt' cellspacing='0' border='0'  class='table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4' id=''>
+           <thead>
+     <tr>
+       <th>#</th>
+       <th style='min-width:80px'>User</th>
+       <th style='min-width:100px'>Date</th>
+       <th>Activity</th>
+       <th valign='bottom'></th>
+     </tr>
+     </thead>			
+   $list_history
+   <tr><td></td><td colspan=3>$status_full</td><td></td></tr>
+   
+     </table>
+               <div class='btn-group'>
+                   &nbsp;
+                 </div>  
+                 <br>
+                             <br>
+                    $nota
+           </div>   
+            </div>
+                                                       <!--end::Table-->
+                                                   </div>
+                                                   <!--end::Tap pane-->
+                                                   <!--begin::Tap pane-->
+                                                   <div class='tab-pane fade' id='kt_table_widget_5_tab_3_$id'>
+                                                       <!--begin::Table container-->
+                                                       <div class='table-responsive'>
+                                                           <!--begin::Table-->
+                                                           Media 
+                                                       </div>
+                                                       <!--end::Table-->
+                                                   </div>
+                                                   <!--end::Tap pane-->
+                                               </div>
+                                           </div>
+                                           <!--end::Body-->
+                                       </div>
+                                       <!--end::Tables Widget 5-->
+                                   </div>
+                                   <!--end::Col-->
+   
+   ";
+
+    $no++;
+    $status_full="";
+    ?>
+    
+
+</body>
+</html>
+
+
+
+// echo "stst".$status_bar ;
+$list.="<tr class='user_$data[id] '  valign='middle' >
+          <!--<td align='center'>$no</td>-->
+<td style='background-color: #f9f9f9 !important; '>
+     <small> Paper ID:</small>
+     <h5>
+      <b>$paper_number</b>
+     </h5>
+              <small class='grey'><i class='glyphicon glyphicon-calendar'></i> $date </small>
+              
+              <div style='color:grey'>$scope</div>
+              <p class='text-primary text-justify'><b>$judul</b><br><small>$penulis</small></p>
+            
+ <div class='col-md-1 text-right bg-default text-success' > 
+          Detail
+              <button href='#' type=button' onclick=\"detil_hide($id)\"  class='btn1 btn1_$id btn btn-circle  btn-warning'><i class='glyphicon glyphicon-chevron-down' ></i></button>
+              <button href='#' type='button' onclick=\"detil_show($id)\" style='display: none;' class='btn2 btn2_$id btn btn-circle  btn-primary'><i class='glyphicon glyphicon-chevron-right'></i></button> 
+ </div> 
+ ".           
+ 
+              
+/* <div class='col-md-12 detil_$id detil' style='background:#fff'>                 
+             <div class='row bs-wizard' style='border-bottom:0;'>
+              
+              <div class='col-xs-3 bs-wizard-step complete'>
+                <div class='text-center bs-wizard-stepnum'>Submission</div>
+                <div class='progress'><div class='progress-bar'></div></div>
+                <a href='#' class='bs-wizard-dot'></a>
+                <div class='bs-wizard-info text-center'>$link_abs <br>Uploaded: <br> $date<br> </div>
+              </div>
+              
+              <div class='col-xs-3 bs-wizard-step $status_bar_review'><!-- active -->
+                <div class='text-center bs-wizard-stepnum'>Review</div>
+                <div class='progress'><div class='progress-bar'></div></div>
+                <a href='#' class='bs-wizard-dot'></a>
+                <div class='bs-wizard-info text-center'><a href='?mod=author&content=abstract_my&p=$id'><button class='btn btn-xs  btn-default'><i class='glyphicon glyphicon-sort'></i> History</button></a> <br>Last review:<br>$date_review<br>$status</div>
+              </div>
+              
+              <div class='col-xs-3 bs-wizard-step $status_bar_accepted'><!-- complete -->
+                <div class='text-center bs-wizard-stepnum'>Accepted </div>
+                <div class='progress'><div class='progress-bar'></div></div>
+                <a href='#' class='bs-wizard-dot'></a>
+                <div class='bs-wizard-info text-center'>$download_loa</div>
+              </div>
+              
+
+              <div class='col-xs-3 bs-wizard-step disabled'><!-- complete -->
+                <div class='text-center bs-wizard-stepnum'>Finish</div>
+                <div class='progress'><div class='progress-bar'></div></div>
+                <a href='#' class='bs-wizard-dot'></a>
+                <div class='bs-wizard-info text-center'> <br>   </div>
+              </div>  
+  </div> */
+  
+  /*
+  menampilkan kotak fullpaper, atur display:none/bukan
+   <div class='col-md-12 detil_$id panel panel-info detil' style='background:#fff;display: none;' > 
+    <div class='col-md-12 detil_$id panel panel-info detil' style='background:#fff;display: ;' > 
+  */
+  "    
+  
+<div class='col-md-12 detil_$id panel panel-info detil' style='background:#fff;display: ;' > 
+  <br>     
+   <ul class='nav nav-pills nav-tabs'>
+ <!-- <li ><a href='#tab_1_$id' data-toggle='tab'>Abstract</a></li>
+  <li class='active'><a href='#tab_2_$id' data-toggle='tab' >Fullpaper </a></li>-->
+  <!--<li ><a href='?mod=author&content=fullpaper_my&p=$id' target='_BLANK'>Review result </a></li>-->
+</ul>
+
+<div class='tab-content'>
+<!--TAB 1 START-->
+<div class='tab-pane fade in ' id='tab_1_$id'>
+     <div class='col-sm-6' style=''> 
+       
+            <h5><b>Abstract Submission </b></h5>   
+
+          <br><br>
+            <ul class='progress-tracker progress-tracker--vertical'>
+              <li class='progress-step is-complete'>
+                <span class='progress-marker'>1</span>
+                <span class='progress-text'>
+                  <h5 class='progress-title'>Submission</h5>
+                   <small>$date</small><br> $link_abs
+                </span>
+              </li>
+              <li class='progress-step is-$status_bar_review'>   <!-- is-complete-->
+                <span class='progress-marker'>2</span>
+                <span class='progress-text'>
+                  <h5 class='progress-title'>Abstract Review</h5> 
+                 <small> $date_review</small><br>
+                  $status<br><br>                         
+                  <a href='?mod=author&content=abstract_my&p=$id'><button class='btn btn-xs  btn-default'><i class='glyphicon glyphicon-cog'></i> Review result</button></a>
+                </span>
+              </li>
+              <li class='progress-step is-$status_bar_accepted'>  <!-- is-active-->
+                <span class='progress-marker'>3</span>
+                <span class='progress-text'>
+                  <h5 class='progress-title'>Accepted</h5>
+                  
+                  <!--Summary text explaining this step to the user-->
+                </span>
+              </li>
+              <li class='progress-step is-$status_bar_payment'>
+                <span class='progress-marker'>4</span>
+                <span class='progress-text'>
+                  <h5 class='progress-title'>Payment $status_payment</h5>
+                   $date_payment <br>
+                   Payment information click <a href='?mod=author&content=payment_cekout' target='_BLANK'>here</a>
+                  <!--Summary text explaining this step to the user-->
+                </span>
+              </li>
+              <li class='progress-step is-$status_bar_loa'>
+                <span class='progress-marker'><i class='glyphicon glyphicon-ok'></i></span>
+                <span class='progress-text'>
+                  <h5 class='progress-title'>LoA</h5>
+                  $download_loa
+                 <br><br>
+                 $btn_upload_fullpaper 
+                  <!--Summary text explaining this step to the user-->
+                </span>
+              </li>
+            </ul> 
+      </div> 
+              
+      <div class='col-sm-6'> 
+              <h5><b> Registration </b></h5>   
+              <div class='well well-sm'>
+                  Type Author: <b>$type_participant</b>
+                  <br>Publication: <b>$publication</b><br>
+                  
+                <br>
+                <br>$edit_abstract | $delete_submission
+              </div>
+              
+      </div>     
+  
+            
+</div>  
+<!--TAB 1 END -->
+<!--TAB 2 START-->
+<div class='tab-pane fade in active' id='tab_2_$id'>
+       <div class='col-md-8' >  
+        
+  <table cellpadding='0' style='font-size:10pt' cellspacing='0' border='0'  class='table' id=''>
+          <thead>
+    <tr>
+      <th>#</th>
+      <!--<th>Date</th>-->
+      <th>Activity</th>
+      <th valign='bottom'>File</th>
+    </tr>
+    </thead>			
+  $list_history
+    </table>
+
+        
+   <!--   
+       <table cellpadding='0' style='font-size:small' cellspacing='0' border='0' class='table '> 
+          <thead>
+                          <tr >
+                              <th >No</th>
+              <th >Date Upload</th>
+              <th >Fullpaper</th>
+                          </tr>
+                      </thead>
+          $list_hisory_full
+          </table>
+              
+      -->            
+              $status_full&nbsp; 
+              
+              <div class='btn-group'>
+                 <!-- <button type='button' class='btn btn-xs btn-default dropdown-toggle' data-toggle='dropdown'>
+                    Detail <span class='caret'></span>
+                  </button>
+                  <ul class='dropdown-menu' role='menu'>
+                    <li><a href='?mod=author&content=abstract_my&p=$id'>Abstract</a></li>
+                    $menu_fullpaper 
+                  </ul>         -->
+                  &nbsp;
+                </div>  
+                <br>
+                            <br>
+              <!-- <b>Review Result</b> 
+                <button type='button' class='btn btn-xs btn-default dropdown-toggle' data-toggle='dropdown'>
+                  View <span class='caret'></span>
+                  </button>
+                  <ul class='dropdown-menu' role='menu'>
+                   
+                    $menu_fullpaper 
+                  </ul>       
+                  
+                    -->
+                  
+                   $nota
+          
+          </div>  
+           <div style='margin-top:20'></div>       
+       <!--    <div class='col-md-4'>  
+                <b> Payment</b>  
+                <div class='well' style='margin-top:0px;'>
+                
+                 $payment_verified
+                 $payment_info
+                
+                </div>-->
+           </div>
+           
+</div> 
+<!--TAB 2 END -->
+ <!--TAB 3 START-->
+<div class='tab-pane fade in ' id='tab_3_$id'>
+       <div class='col-md-4' >  
+          
+           </div>
+           
+</div> 
+<!--TAB 3 END --> 
+</div>   
+    
+      ". /*   <div class='col-sm-10'> 
+            <h5>Submission Progress</h5>   
+          </div> 
+          <div class='col-sm-2 text-right'> 
+          <br>
+             <a href='?mod=author&content=abstract_update_option&id=$id' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-pencil'></i> Edit </a> 
+          </div>
+          <br><br>
+            <ul class='progress-tracker progress-tracker--vertical'>
+              <li class='progress-step is-complete'>
+                <span class='progress-marker'>1</span>
+                <span class='progress-text'>
+                  <h5 class='progress-title'>Submission</h5>
+                   <small>$date</small><br> $link_abs
+                </span>
+              </li>
+              <li class='progress-step is-$status_bar_review'>   <!-- is-complete-->
+                <span class='progress-marker'>2</span>
+                <span class='progress-text'>
+                  <h5 class='progress-title'>Review</h5> 
+                 <small> $date_review</small><br>
+                  $status<br><br>
+                  <a href='?mod=author&content=abstract_my&p=$id'><button class='btn btn-xs  btn-default'><i class='glyphicon glyphicon-sort'></i> History</button></a>
+                </span>
+              </li>
+              <li class='progress-step is-$status_bar_accepted'>  <!-- is-active-->
+                <span class='progress-marker'>3</span>
+                <span class='progress-text'>
+                  <h5 class='progress-title'>Accepted</h5>
+                  
+                  <!--Summary text explaining this step to the user-->
+                </span>
+              </li>
+              <li class='progress-step is-$status_bar_payment'>
+                <span class='progress-marker'>4</span>
+                <span class='progress-text'>
+                  <h5 class='progress-title'>Payment $status_payment</h5>
+                   $date_payment <br>
+                   Payment information click <a href='?mod=author&content=payment' target='_BLANK'>here</a>
+                  <!--Summary text explaining this step to the user-->
+                </span>
+              </li>
+              <li class='progress-step is-$status_bar_loa'>
+                <span class='progress-marker'><i class='glyphicon glyphicon-ok'></i></span>
+                <span class='progress-text'>
+                  <h5 class='progress-title'>LoA</h5>
+                  $download_loa
+                  <!--Summary text explaining this step to the user-->
+                </span>
+              </li>
+            </ul>
+                        
+        
+   <hr>            
+          <div class='col-md-4' >  
+              <b>Fullpaper</b>      
+              $status_full&nbsp; 
+              
+              <div class='btn-group'>
+                  <button type='button' class='btn btn-xs btn-default dropdown-toggle' data-toggle='dropdown'>
+                    Detail <span class='caret'></span>
+                  </button>
+                  <ul class='dropdown-menu' role='menu'>
+                    <li><a href='?mod=author&content=abstract_my&p=$id'>Abstract</a></li>
+                    $menu_fullpaper 
+                  </ul> 
+                  &nbsp;
+                </div>  
+               
+         
+                   $nota
+          
+          </div> 
+           <div style='margin-top:20'></div>       
+           <div class='col-md-6'>  
+                <b> Payment</b>  
+                <div class='well' style='margin-top:0px;'>
+                
+                 $payment_verified
+                 $payment_info
+                
+                </div>
+           </div>
+           
+       */ "     
+          <!--  //Sementara delete dihapus dulu setelah subit abstract selesai  
+          <div class='col-md-2 text-right' > 
+              <b> Delete submission</b> <br>
+              <i class='glyphicon glyphicon-trash'></i>   
+              
+               $delete_submission 
+           </div>         
+            -->
+           
+               
+   </div>
+  <!-- <div class='col-md-12 panel panel-info' style='background:#fff'> 
+   </div> -->       
+          <hr>                
+                                              
+              </td>
+             
+             
+             <!-- <td>$date</td>
+                            <td><div style='color:#316C9D'>$judul</div>
+                <div>$penulis</div>
+                $data[abstract2]
+                $abstrak_isi2
+                <div style='color:gray'>$scope</div>
+              </td>  
+              
+               
+              
+              
+              
+              <td>$status
+                        
+              </td> 
+              <td>  $status_full</td>   
+              <td width='20%'><!--<a href='?mod=author&content=abstract_my&p=$id' class='btn btn-default'>Detail</a>-->
+           <!--   <div class='btn-group'>
+                  <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
+                    Detail <span class='caret'></span>
+                  </button>
+                  <ul class='dropdown-menu' role='menu'>
+                    <li><a href='?mod=author&content=abstract_my&p=$id'>Abstract</a></li>
+                    $menu_fullpaper 
+                  </ul> 
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                </div>  
+              $delete  -->
+      </div>         
+   </td> 
+                  
+            </tr>";
+   
+   $no++;
+  
+   $status_full="";
+   ?>
+   
