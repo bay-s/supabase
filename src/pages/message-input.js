@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import img from '../akun.jpg'
 import supabase from '../supabase-config'
 
-class CommentInput extends React.Component{
+class MessageInput extends React.Component{
     constructor(props){
         super(props)
         this.state = {
@@ -63,4 +63,4 @@ UpdateTotalComment = async () => {
   }
 }
 
-export default CommentInput;
+export default MessageInput;

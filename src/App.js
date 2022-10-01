@@ -8,6 +8,7 @@ import Header from "./pages/header"
 import Profile from "./pages/profile"
 import ModalPosts from "./pages/modal-post"
 import EditProfile from "./pages/edit-profile"
+import Message from "./pages/message"
 
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
         <Route path="/" element={isLogin ? <Home isLogin={isLogin} data={data}/> : <LoginPage isLogin={isLogin} />} />
         <Route path="/profile/:id" element={isLogin ? <Profile user={data} /> : <LoginPage isLogin={isLogin} />} />
         <Route path="/edit-profile/" element={isLogin ? <EditProfile data={data}/> : <LoginPage isLogin={isLogin} />} />
+        <Route path="/message/" element={isLogin ? <Message /> : <LoginPage isLogin={isLogin} />} />
         <Route path="/register/" element={<RegisterPages />} />
         <Route path="/login/" element={<LoginPage isLogin={isLogin} />} />
       </Routes>

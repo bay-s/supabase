@@ -296,6 +296,12 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
   border: 2px solid white;
   border-radius: 50%;
 } */
+.btn-transparent{
+background-color: transparent !important;
+box-shadow: none !important;
+outline: none !important;
+border: none !important;
+}
 
 .add-more{
   position: absolute;
@@ -474,6 +480,10 @@ max-height:100%; */
 height: 550px !important;
 }
 
+.h-700px{
+  height:700px !important;
+}
+
 .h-half{
   height:445px !important;
   }
@@ -619,3 +629,50 @@ height: 550px !important;
 }
 
 /* ==== END HOVER ===== */
+
+/* === TEXT CHAT === */
+.chat-box{
+  overflow: hidden;
+  overflow-y: scroll;
+  }
+  .chat-box::-webkit-scrollbar {
+    background-color: var(--whitey);
+    width: 7px;
+}
+  
+
+ .answer.right .text {
+  background: #7266ba;
+  color: #ffffff;
+  border-radius: 8px 8px 0 8px;
+}
+ .answer.right .text:before {
+  right: -30px;
+  border-left-color: #7266ba;
+  border-left-width: 12px;
+}
+ .answer.left .text {
+  background: #ebebeb;
+  color: #333333;
+  border-radius: 8px 8px 8px 0;
+}
+.answer .text {
+  padding: 12px;
+  font-size: 16px;
+  line-height: 26px;
+  position: relative;
+}
+.answer.left .text:before {
+  left: -30px;
+  border-right-color: #ebebeb;
+  border-right-width: 12px;
+}
+ .answer .text:before {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  border: 18px solid transparent;
+  border-bottom-width: 0;
+}
+/* ==== END TEXT CHAT === */

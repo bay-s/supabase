@@ -17,22 +17,21 @@ function PostCardUser(props){
      return () => clearInterval(interval)
   })
     return(
-      loader ? <div class="card loading">
-      <div class="image">
-        
-      </div>
+      loader ? <div className='column is-4'>
+        <div class="card loading">
+      <div class="image"></div>
       <div class="content">
         <h4></h4>
         <div class="description">
-          
         </div>
       </div>
-    </div>:
+    </div>
+      </div> :
 <div className="column is-4">      
       <div className="card post-card">
         <div class="card-image">
           <figure className="image is-4by3">
-            <img
+            <img className='is-clickable'
              src={props.data.post_image ==='' ? "https://bulma.io/images/placeholders/1280x960.png" : props.data.post_image }
             />
           </figure>
