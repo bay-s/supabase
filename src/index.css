@@ -392,7 +392,12 @@ max-height:100%; */
 .text-center{
   text-align: center !important;
 }
-
+.text-right{
+  text-align: right !important;
+}
+.text-left{
+text-align: left !important;
+}
 .text-small{
   font-size: 10px !important;
 }
@@ -674,5 +679,16 @@ height: 550px !important;
   bottom: 0;
   border: 18px solid transparent;
   border-bottom-width: 0;
+}
+
+.user-list:hover{
+  background-color:rgba(204, 204, 204, 0.363);
+  transition: 250ms;
+}
+
+.message  img{
+  width: 150px !important;
+  height: 150px !important;
+  object-fit: cover;
 }
 /* ==== END TEXT CHAT === */

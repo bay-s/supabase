@@ -12,6 +12,14 @@ const [err,setErr] = useState(null)
 const [data,setData] = useState([])
 const [message,setMessage] = useState('')
 useEffect(() => {
+  const subscritpion = supabase
+  .from("*") // here, you can put '*' if you want to listen to changes on every table or you can put name of a specifict table
+  .on('postgres_changes', { event: '*', schema: '*' }, payload => {
+    console.log('Change received!', payload)
+    
+  })
+  .subscribe();
+
 const fetchData = async () => {
   const {data,error} = await supabase
   .from('post')
@@ -29,6 +37,9 @@ const fetchData = async () => {
   }
 }
 fetchData()
+return () => {
+  supabase.removeSubscription(subscritpion);
+};
 },[])
 
 const deletePost = async (e) => {
@@ -53,7 +64,7 @@ const deletePost = async (e) => {
 }
 
 const postCard = data.length < 1 ? "" : data.map(item => {
- return <PostCard data={item}/>
+ return <PostCard data={item} user={props.data}/>
 })
   return (
 <div class="container mx-auto my-5">

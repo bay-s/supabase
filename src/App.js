@@ -9,6 +9,7 @@ import Profile from "./pages/profile"
 import ModalPosts from "./pages/modal-post"
 import EditProfile from "./pages/edit-profile"
 import Message from "./pages/message"
+import MessageList from "./pages/message-list"
 
 
 function App() {
@@ -36,7 +37,10 @@ function App() {
       setUsers(user)
       console.log("user logged in");
       console.log(user);
+      console.log(isLogin);
     }else{
+      setIsLogin(false)
+      console.log(isLogin);
       console.log("not login");
     }
 
@@ -65,13 +69,15 @@ function App() {
 
 
   return (
+
     <BrowserRouter>
       <Header isLogin={isLogin} user={users} openModal={openModal}/>
       <Routes>
         <Route path="/" element={isLogin ? <Home isLogin={isLogin} data={data}/> : <LoginPage isLogin={isLogin} />} />
+        <Route path="/message-list/" element={isLogin ? <MessageList data={data}/> : <LoginPage isLogin={isLogin} />} />
         <Route path="/profile/:id" element={isLogin ? <Profile user={data} /> : <LoginPage isLogin={isLogin} />} />
         <Route path="/edit-profile/" element={isLogin ? <EditProfile data={data}/> : <LoginPage isLogin={isLogin} />} />
-        <Route path="/message/" element={isLogin ? <Message /> : <LoginPage isLogin={isLogin} />} />
+        <Route path="/message/:id" element={isLogin ? <Message user={data}/> : <LoginPage isLogin={isLogin} />} />
         <Route path="/register/" element={<RegisterPages />} />
         <Route path="/login/" element={<LoginPage isLogin={isLogin} />} />
       </Routes>

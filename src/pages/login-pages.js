@@ -19,6 +19,7 @@ constructor(){
     sukses:false,
     disable:false,
     isSubmit:false,
+    login:false
   }
 }
 
@@ -86,7 +87,7 @@ render(){
 
   return(
 this.props.isLogin ? <Navigate to="/" replace={true} /> :
-<div className='container my-fluid'>
+<div className='container mt-5'>
             <div className='columns is-centered '>
 <div className='column is-6 box p-0 '>
 <div className='banner' style={banner}></div>

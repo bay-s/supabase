@@ -19,7 +19,8 @@ console.log(this.state.likes_id);
 }
 
 getIdLikes = async () => {
-  const id = this.props.post.author_uid
+  const id = this.props.user.uid
+  console.log(this.props.user.uid);
   const { data, error } = await supabase
   .from('likes')
   .select()
@@ -45,6 +46,7 @@ getIdLikes = async () => {
 addLikes = async (e) => {
     e.preventDefault()
     const id = this.props.post.id
+    const user_id = this.props.user.uid
     if(parseFloat(e.target.dataset.id) === id){
       if(e.target.classList.contains('likes')){
         this.setState({total_likes: this.state.total_likes - 1}, () => {
@@ -81,7 +83,7 @@ const { data, error } = await supabase
   .from('likes')
   .insert([
     { 
-        likes_id: this.props.post.author_uid,
+        likes_id: this.props.user.uid,
         post_id:id
     }
   ])
@@ -108,7 +110,7 @@ if(updata){
 const { data, error } = await supabase
 .from('likes')
 .delete()
-.eq('likes_id',this.props.post.author_uid)
+.eq('likes_id',this.props.user.uid)
 
 if(data){
     alert("Remove likes sukes")

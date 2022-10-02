@@ -16,25 +16,25 @@ function DropDown(props){
     // })
   },[])
     return(
-        <div class={open ? "dropdown is-center is-active" : "dropdown"}>
+        <div className={open ? "dropdown is-center is-active" : "dropdown"}>
   <div class="dropdown-trigger" >
     <button class="button " aria-haspopup="true" aria-controls="dropdown-menu" onClick={openMenu}>
-      <span> <i class="fa fa-user-o" aria-hidden="true"></i></span>
-      <span class="icon is-small">
-        <i class="fa fa-angle-down open-menus" aria-hidden="true"></i>
+      <span> <i className="fa fa-user-o" aria-hidden="true"></i></span>
+      <span className="icon is-small">
+        <i className="fa fa-angle-down open-menus" aria-hidden="true"></i>
       </span>
     </button>
   </div>
-  <div class="dropdown-menu" id="dropdown-menu" role="menu">
-    <div class="dropdown-content">
-    <Link class="dropdown-item" to={`/profile/${props.user.id}`}>
+  <div className="dropdown-menu" id="dropdown-menu" role="menu">
+    <div className="dropdown-content">
+    <Link className="dropdown-item" to={`/profile/${props.user.id}`}>
         Profile
     </Link>
-    <Link class="dropdown-item" to='/edit-profile/'>
+    <Link className="dropdown-item" to='/edit-profile/'>
         Setting
     </Link>
-      <hr class="dropdown-divider" />
-      <Link class="dropdown-item" to='#' onClick={props.Logout}>
+      <hr className="dropdown-divider" />
+      <Link className="dropdown-item" to='#' onClick={props.Logout}>
         Lgout
       </Link>
     </div>

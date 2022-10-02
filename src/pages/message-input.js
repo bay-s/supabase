@@ -2,65 +2,89 @@ import React  from 'react'
 import { Link, useParams } from 'react-router-dom'
 import img from '../akun.jpg'
 import supabase from '../supabase-config'
+import ReactQuill from 'react-quill';
 
 class MessageInput extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            loading:true,
             hide:false,
-            comment:''
+            formats:[
+                'header',
+                'bold', 'italic', 'underline', 'strike', 'blockquote',
+                'list', 'bullet', 'indent',
+                'link', 'image'
+              ],
+              modules: {
+                toolbar: [
+                  [{ 'header': [1, 2, false] }],
+                  ['bold', 'italic', 'underline','strike', 'blockquote'],
+                  [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+                  ['link', 'image'],
+                  ['clean']
+                ],
+              },
+              value:[],
+              hide:false
         }
+        
     }
 
-       
 handlerChange = (e) => {
-    const {name,value} = e.target
-    console.log(this.props);
-    this.setState({[name]:value})
-    if(value.length > 0){
+  console.log(e);
+    this.setState({value:e})
+    if(this.state.value.length > 0){
         this.setState({hide:true})
     }else{
         this.setState({hide:false})
     }
   }
   
-postComment = async (e) => {
+SendMessage =  async (e) => {
 e.preventDefault()
- const {data,error} = await supabase.from('comment')
+
+if(!this.state.value){
+    alert("input field required")
+    return
+}
+ const {data,error} = await supabase.from('message')
  .insert([
-    {comment_content:this.state.comment,
-    post_id:this.props.post.id,
-    author_id:this.props.post.author_uid }
+    {
+    message_content:this.state.value,
+    owner_id:this.props.id,
+    sender_id:this.props.user.uid
+}
   ])
   if(error) console.log(error);
   if(data){
     console.log(data);
+    this.setState({value:""})
     alert("Comment Sukses")
-    this.UpdateTotalComment()
   }
 }
 
-UpdateTotalComment = async () => {
-    const { data, error } = await supabase.from('post')
-  .update({total_comment:this.props.post.total_comment + 1})
-  .eq('id',this.props.post.id)
-  if(data) console.log(data);
-  if(error) console.log(error);
-}
+// UpdateTotalComment = async () => {
+//     const { data, error } = await supabase.from('post')
+//   .update({total_comment:this.props.post.total_comment + 1})
+//   .eq('id',this.props.post.id)
+//   if(data) console.log(data);
+//   if(error) console.log(error);
+// }
   render(){
 
     return(
-<form class="field has-addons" onSubmit={this.postComment}>
-    <input class="input no-radius" type="text" name='comment' placeholder="Write something" onChange={this.handlerChange}/>
+<form class="field is-flex is-flex-column is-flex-gap-md w-100" onSubmit={this.SendMessage}>
+<ReactQuill theme="snow" value={this.state.value} onChange={this.handlerChange} name='quill'  modules={this.state.modules} formats={this.state.formats}/>
 {this.state.hide ? <button type='submit' class="button is-info no-radius">
       Post
    </button> : <button class="button is-info no-radius" disabled>
       Post
     </button>}
+
 </form>
     )
   }
 }
 
 export default MessageInput;
+

@@ -65,7 +65,7 @@ const openModalPost = e => {
         </div>
         <div className="card-content p-2">
           <div className="is-flex align-center justify-between px-2 py-2">
-          <LikesCard post={props.data} />
+          <LikesCard post={props.data} user={props.user}/>
           <i class="fa fa-bookmark-o is-size-5 is-clickable"></i>
           </div>
           <div className="content p-0 p-2 is-flex is-flex-column">

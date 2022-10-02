@@ -19,7 +19,7 @@ const HomeProfile = (props) => {
           <header className="is-flex align-center justify-between">
             <div className="is-flex align-center">
               <figure className="image is-64x64 avatar">
-                <img className="is-rounded" src={props.data.avatar == null ? akun : props.data.avatar} />
+                <img className="is-rounded" src={props.data.avatar === '' ? akun : props.data.avatar} />
               </figure>
               <p className="card-header-title is-size-6 is-bold">
                <Link to={`/profile/${props.data.uid}`} className='has-text-dark'>{props.data.fullname}</Link>
