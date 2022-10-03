@@ -2,21 +2,23 @@ import React, { useEffect, useState } from  'react'
 import { useParams } from 'react-router-dom'
 import supabase from '../supabase-config'
 import MessageAvatar from './message-chat-avatar'
+import MessageAvatarHeader from './message-chat-header'
 import MessageChatLeft from './message-chat-left'
 import MessageChatRight from './message-chat-right'
+import MessageInput from './message-input'
 
 
 
-function MessageList(props){
-  const {id} = useParams()
-  return(
-<MessageListCard id={id} data={props.data}/>
-  )
-}
+// function MessageList(props){
+//   const {id} = useParams()
+//   return(
+// <MessageListCard id={id} data={props.data}/>
+//   )
+// }
 
-export default MessageList;
 
-class MessageListCard extends React.Component{
+
+class MessageList extends React.Component{
 constructor(){
   super()
   this.state = {
@@ -30,18 +32,6 @@ constructor(){
 
 async componentDidMount(){
 await this.fetchMessage()
-// this.fetchMessageDetail()
-}
-
-async componentDidUpdate(){
-  // this.fetchMessage()
-  // await this.fetchMessageDetail()
-  // if(!this.state.MessageId){
-  //   // console.log("kosong");
-  // }else{
-  //   this.fetchMessageDetail()
-  //   console.log(this.state.MessageDetail);
-  // }
 }
 
  fetchMessage = async e => {
@@ -98,7 +88,7 @@ if(err) console.log(err);
 OpenMessageTab = async e => {
 e.preventDefault()
 const id = e.target.dataset.message
-console.log(id);
+console.log(e.target.parentElement.previousElementSibling);
 this.setState({MessageId:id})
 await this.fetchMessageDetail(id)
 }
@@ -137,7 +127,7 @@ await this.fetchMessageDetail(id)
     {/* START CARD */}
     <div className='card'>
     <header class="card-header align-center is-flex-gap-md p-3">
-
+{this.state.MessageId.length < 1 ? "" : <MessageAvatarHeader avatar_id={this.state.MessageId}/>}
     </header>
   <div className='p-3 is-flex is-flex-column is-flex-gap-lg chat-box' style={height}>
     {/* <MessageChatLeft />    */}
@@ -147,7 +137,7 @@ return <MessageChatRight msg={msg} />
   }
     </div>
     {/* END MESSAGE */}
-    {/* <MessageInput id={id} user={props.user}/> */}
+    <MessageInput id={this.state.MessageId} user={this.props.data}/>
     </div>
     {/* END CARD */}
     </div>
@@ -161,3 +151,4 @@ return <MessageChatRight msg={msg} />
   }
 }
 
+export default MessageList;
