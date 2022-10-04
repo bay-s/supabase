@@ -56,7 +56,9 @@ const DisplayReply = e => {
 </div>
 {/* --------------- */}
 <div className=''>
+<div className={reply.length < 1 ? 'hide' : ''}>
 <button className='btn-transparent is-small text-small is-title has-text-grey-light mx-5 px-4' onClick={DisplayReply} >{!viewReply ? `View replies ${reply.length}` : "Hide replies"}</button>
+</div>
 <div className={viewReply ? 'is-flex is-flex-column mx-5 py-2' : 'hide'}>
     <CommentReplyCard reply={reply} id={props.item.id} openReply={props.openReply }/>
 </div>
