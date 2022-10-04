@@ -15,11 +15,9 @@ const ModalPostRight = (props) => {
     const [loader,setLoader] = useState(true)
     const [id,setId] = useState('')
     const [open,setOpen] = useState(false)
-    const [reply,setReply] = useState([])
-
+    
     useEffect(() => {
         getComment()
-        getReplyComment()
     },[])
 
     const getComment = async () => {
@@ -42,19 +40,10 @@ const ModalPostRight = (props) => {
         setId(index)
         }
 
-    const getReplyComment = async () => {
-            const {data,err} = await supabase.from('comment_reply')
-            .select()
-            .eq('comment_id',props.item.id)
-            if(data) { 
-                console.log(data);
-            setReply(data)
-            }
-            if(err)  console.log(err);
-        }
-    // const commentCard = comment.length < 1 ? "No comment yet" : comment.map(item => {
-    //     return <CommentCard item={item} openReply={openReply }/>
-    //      })
+    const commentCard = comment.length < 1 ? "No comment yet" : comment.map(item => {
+        return props.post.id === item.post_id ? <CommentCard item={item} openReply={openReply }/> : ""
+         })
+         
     return(
 <div className='column is-4 has-background-white h-100 p-0 is-flex is-flex-column'>
 <header class="modal-card-head p-0 p-3 justify-between">
@@ -71,7 +60,7 @@ const ModalPostRight = (props) => {
 <hr className='navbar-divider'/>
 {/* END CAPTION */}
 <div className='is-flex is-flex-column is-flex-gap-md p-2 my-auto is-flex-grow-1 comment-container'>
-{loader ? <AnimasiEllipsis /> :  <CommentCard comment={comment} reply={reply} openReply={openReply }/>}
+{loader ? <AnimasiEllipsis /> : commentCard}
 </div>
 <hr className='navbar-divider'/>
 <div className='is-flex is-flex-column p-2 align-start'>

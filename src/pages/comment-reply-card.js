@@ -10,7 +10,7 @@ const CommentReplyCard = (props) => {
 
     return(
 props.reply.length < 1 ? ""  : props.reply.map(com => {
-            return <div className='is-flex is-flex-column '>
+            return  props.id === com.comment_id ? <div className='is-flex is-flex-column'>
             <div className='is-flex align-center is-flex-gap-md'>
             <Avatar id={com.author_id}/>
             <span className='is-size-7 is-title'>{com.reply_content}</span>
@@ -19,8 +19,8 @@ props.reply.length < 1 ? ""  : props.reply.map(com => {
             <span className='is-size-7 is-title has-text-grey-light'>{timeDifference(com.created_at)}</span>
             <button className='btn-transparent is-small is-size-7 is-title' data-index={com.id} onClick={props.openReply }>Reply</button>
             </div>
-            </div>
-})
+            </div> : ""
+}) 
     )
 }
 
