@@ -24,13 +24,13 @@ fetchData = async () => {
     .select()
     .eq('uid',this.props.avatar_id)
     if(data) {
-        console.log(data);
+        // console.log(data);
       this.setState({user:data})
     }
     if(err) console.log(err);
   }
 render(){
-  console.log(this.props.avatar_id);
+
   return(
        this.state.user.length < 1 ? "" : this.state.user.map(m => {
           return  <div className='is-flex align-center is-flex-gap-md is-clickable user-list' data-message={m.uid} >

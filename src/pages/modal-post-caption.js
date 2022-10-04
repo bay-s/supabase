@@ -11,8 +11,8 @@ const ModalPostCaption = (props) => {
 <figure className="image is-32x32 avatar">
  <img className="is-rounded" src={props.UserData.avatar == null ? akun : props.UserData.avatar} />
 </figure>
-<Link to={`/profile/${props.UserData.uid}`} className='has-text-dark'>{props.UserData.username}</Link>
-<a href='#'>#{props.post.post_cat}</a>
+<Link to={`/profile/${props.UserData.uid}`} className='has-text-dark is-size-7'>{props.UserData.username}</Link>
+<a href='#' className='is-size-7'>#{props.post.post_cat}</a>
 <p className='is-size-7'>{props.post.post_content}</p>
 </div>
     )

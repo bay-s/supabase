@@ -5,7 +5,8 @@ import MessageAvatar from './message-chat-avatar'
 import MessageAvatarHeader from './message-chat-header'
 import MessageChatLeft from './message-chat-left'
 import MessageChatRight from './message-chat-right'
-import MessageInput from './message-input'
+import MessageReplyInput from './message-reply-input'
+
 
 
 
@@ -26,6 +27,7 @@ constructor(){
     userHeader:[],
     MessageId:'',
     message:[],
+    reply:[],
     MessageDetail:[]
   }
 }
@@ -55,16 +57,29 @@ await this.fetchMessage()
   if(err) console.log(err);
 }
 
- getUserData = async (id) => {
-  const {data,err} = await supabase.from('users')
+fetchMessageReply = async id => {
+
+  const {data,err} = await supabase.from('message_reply')
   .select()
-  .eq('uid',id)
+  .eq('sender_id',id)
   if(data){
-    this.setState({user:data})
+    this.setState({reply:data})
     // console.log(data);
+    const test = []
+console.log(data);
+    data.forEach(m => {
+      const id = m.owner_id
+      // test.push(id)
+      // const news =  [...new Set(test)];
+      // this.setState({user:news})
+      // console.log(id);
+      // this.getUserData(id) 
+    })
   }
   if(err) console.log(err);
- }
+}
+
+
 
 fetchMessageDetail = async (id) => {
 if(!this.state.MessageId){
@@ -91,6 +106,7 @@ const id = e.target.dataset.message
 console.log(e.target.parentElement.previousElementSibling);
 this.setState({MessageId:id})
 await this.fetchMessageDetail(id)
+await this.fetchMessageReply(id)
 }
   render() {  
 
@@ -131,13 +147,18 @@ await this.fetchMessageDetail(id)
     </header>
   <div className='p-3 is-flex is-flex-column is-flex-gap-lg chat-box' style={height}>
     {/* <MessageChatLeft />    */}
-  {this.state.MessageId.length < 1 ? "kosong brow" : this.state.MessageDetail.map(msg => {
+  {this.state.MessageId.length < 1 ? "" : this.state.MessageDetail.map(msg => {
 return <MessageChatRight msg={msg} />
+  })
+  }
+  {this.state.MessageId.length < 1 ? "" : this.state.reply.map(msg => {
+return <MessageChatLeft msg={msg} />
   })
   }
     </div>
     {/* END MESSAGE */}
-    <MessageInput id={this.state.MessageId} user={this.props.data}/>
+    {this.state.MessageId.length < 1 ? "" : <MessageReplyInput id={this.state.MessageId} user={this.props.data}/>
+    }
     </div>
     {/* END CARD */}
     </div>

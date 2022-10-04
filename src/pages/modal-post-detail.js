@@ -18,7 +18,7 @@ function ModalPostDetail(props){
 </div>
 {/* END POST LEFT */}
 {/* START POST RIGHT */}
-<ModalPostRight post={props.post} UserData={props.UserData} />
+<ModalPostRight post={props.post} user={props.user} UserData={props.UserData} />
 {/* END POST RIGHT */}
 </div>
   </div>

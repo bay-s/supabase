@@ -71,7 +71,8 @@ const openModalPost = e => {
           <div className="content p-0 p-2 is-flex is-flex-column">
             <span className='is-size-7 is-title'>{props.data.post_content}</span>
             <span className='is-size-7 is-title'>{props.data.total_likes} Likes</span>
-            <a href="#">#{props.data.post_cat}</a>
+            <a href="#" className='is-size-7 '>#{props.data.post_cat}</a>
+            <a href="#" className={props.data.total_comment < 1 ? 'hide' : 'is-size-7 has-text-grey'}>View {props.data.total_comment} comment</a>
             <time datetime={props.data.created_at} className="is-title is-bold text-small">{ timeDifference(props.data.created_at)}</time>
           </div>
         </div>
@@ -83,7 +84,7 @@ const openModalPost = e => {
 
 <div className={openModal ? 'modal is-active modal-post' : 'modal'}>
 <div class="modal-background"></div>
-<ModalPostDetail post={props.data} UserData={UserData}/>
+<ModalPostDetail post={props.data} UserData={UserData} user={props.user}/>
 <button class="modal-close is-large open-post" aria-label="close" onClick={openModalPost}></button>
  </div>
 </>

@@ -657,7 +657,7 @@ height: 550px !important;
   border-left-width: 12px;
 }
  .answer.left .text {
-  background: #ebebeb;
+  background: hsl(171, 100%, 96%);
   color: #333333;
   border-radius: 8px 8px 8px 0;
 }

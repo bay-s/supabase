@@ -4,7 +4,7 @@ import img from '../akun.jpg'
 import supabase from '../supabase-config'
 import ReactQuill from 'react-quill';
 
-class MessageInput extends React.Component{
+class MessageReplyInput extends React.Component{
     constructor(props){
         super(props)
         this.state = {
@@ -47,22 +47,29 @@ if(!this.state.value){
     alert("input field required")
     return
 }
- const {data,error} = await supabase.from('message')
+ const {data,error} = await supabase.from('message_reply')
  .insert([
     {
     message_content:this.state.value,
-    owner_id:this.props.id,
-    sender_id:this.props.user.uid
+    owner_id:this.props.user.uid,
+    sender_id:this.props.id
 }
   ])
   if(error) console.log(error);
   if(data){
     console.log(data);
     this.setState({value:""})
-    alert("Comment Sukses")
+    alert("Reply Sukses")
   }
 }
 
+// UpdateTotalComment = async () => {
+//     const { data, error } = await supabase.from('post')
+//   .update({total_comment:this.props.post.total_comment + 1})
+//   .eq('id',this.props.post.id)
+//   if(data) console.log(data);
+//   if(error) console.log(error);
+// }
   render(){
 
     return(
@@ -73,11 +80,10 @@ if(!this.state.value){
    </button> : <button class="button is-info no-radius" disabled>
       Post
     </button>}
-
 </form>
     )
   }
 }
 
-export default MessageInput;
+export default MessageReplyInput;
 

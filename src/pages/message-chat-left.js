@@ -1,27 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import AnimasiSkeleton from './animasi-skeleton'
+import timeDifference from './timestamp'
 
 
 const MessageChatLeft = (props) => {
+    const [loader,setLoader] = useState(true)
+    
+    useEffect(() => {
+        if(props.msg) setLoader(false)
+    },[])
+    const createMarkup = () => {
+        return {__html:props.msg.message_content};
+      }
+      
+
     return(
-<div class="answer left">
-{/* START AVATAR LEFT */}
-<div className='is-flex align-center is-flex-gap-md'>
-<div class="image is-32x32 avatar">
-<img className="is-rounded" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User name" />
-</div>
-<div className='is-flex is-flex-column'>
-<p className='is-title is-size-7 p-0'>Alexander Herthic</p>
-<span className='is-title is-size-7 p-0'>5 min ago</span>
-</div>
-</div>
-{/* END AVATAR LEFT */}
-<div className='is-flex is-flex-column'>
-<p className='text is-title is-size-7 '>
-Lorem ipsum dolor amet, consectetur adipisicing elit Lorem ipsum dolor amet, consectetur adipisicing elit Lorem ipsum dolor amet, consectetur adiping elit
-</p>
-</div>
-{/* END TEXT */}
- </div> 
+        loader ? <AnimasiSkeleton /> : <div class="answer left">
+        {/* START AVATAR LEFT */}
+        {/* {user} */}
+        {/* END AVATAR LEFT */}
+        <div className='is-flex is-flex-column message'>
+        <p className='text is-size-7 text-right '>
+        <div dangerouslySetInnerHTML={createMarkup()} />
+        <span className='is-title is-size-7 p-0'>{timeDifference(props.msg.created_at)}</span>
+        </p>
+        </div>
+        {/* END TEXT */}
+         </div>  
     )
 }
 

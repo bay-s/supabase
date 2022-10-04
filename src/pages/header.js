@@ -49,10 +49,10 @@ return(
   <li className='navbar-item'><a href='#0'>
   <i className="fa fa-bell-o has-text-dark has-text-weight-bold is-size-5" aria-hidden="true"></i>
   </a></li>
-  <li className='navbar-item'><a href='#0' onClick={props.openModal}>
+  <li className={props.isLogin ? 'navbar-item' : 'hide'}><a href='#0' onClick={props.openModal}>
   <i className="fa fa-plus-square-o has-text-dark has-text-weight-bold is-size-5" aria-hidden="true"></i>
   </a></li>
-  <li className='navbar-item'><Link to='/message-list/'>
+  <li className={props.isLogin ? 'navbar-item' : "hide"}><Link to='/message-list/'>
   <i className="fa fa-envelope-o has-text-dark has-text-weight-bold is-size-5" aria-hidden="true"></i>
 </Link></li>
  <li className='navbar-item'>
