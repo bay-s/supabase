@@ -17,8 +17,8 @@ const  Header = (props) => {
 
 
 return(
-<header className='header py-3 shadow' >
-<nav class="navbar mx-6 is-flex justify-between bg-transparent" role="navigation" aria-label="main navigation">
+<header className='header py-3 shadow ' >
+<nav class="navbar is-fixed-top mx-5 is-flex justify-between bg-transparent" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
      <h2 className='is-size-3 has-text-dark has-text-weight-bold main-title'>
 <Link to='/' className='has-text-dark pt-1'>

@@ -9,22 +9,10 @@ import CommentReplyCard from './comment-reply-card'
 
 
 const CommentCard = (props) => {
-    const [userComment,setUserComment] = useState([])
     const [reply,setReply] = useState([])
     const [viewReply,setViewReply] = useState(false)
+    const [deletes,SetDeletes] = useState(false)
      useEffect(() => {
-        const getUserComment = async () => {
-            const id =props.item.author_id
-            const {data,err} = await supabase.from('users')
-            .select()
-            .eq('uid',id)
-            if(data){
-                setUserComment(data)
-                console.log(data);
-            }
-            if(err) console.log(err);
-        }
-        getUserComment()
         getReplyComment()
     },[])
 
@@ -44,8 +32,24 @@ const DisplayReply = e => {
     setViewReply(!viewReply)
 }
 
+const DeleteComment = async (e) => {
+   const id = e.target.dataset.id 
+  if(window.confirm("Are you sure want to delete this comment ?")) {
+    const { data,error } = await supabase
+    .from('comment')
+    .delete()
+    .eq('id', id)
+    if(data) { 
+        alert(`Delete sukses ${data}`)
+        SetDeletes(!deletes)
+    }
+    if(error) alert(error.message)
+  }
+}
+
+
     return(
-<div className='is-flex is-flex-column'>
+<div className={deletes ? 'hide' : 'is-flex is-flex-column'}>
 <div className='is-flex align-center is-flex-gap-md'>
 <Avatar id={props.item.author_id}/>
 <span className='is-size-7 is-title'>{props.item.comment_content}</span>
@@ -53,11 +57,12 @@ const DisplayReply = e => {
 <div className='is-flex align-center is-flex-gap-sm px-4 mx-5 mb-3'>
 <span className='is-size-7 is-title has-text-grey-grey'>{timeDifference(props.item.created_at)}</span>
 <button className='btn-transparent is-small is-size-7 is-title' data-index={props.item.id} onClick={props.openReply }>Reply</button>
+<i className={props.user.uid === props.item.author_id ? "fa fa-trash-o is-size-7 has-text-danger is-clickable": 'hide'} data-id={props.item.id} aria-hidden="true" onClick={DeleteComment}></i>
 </div>
 {/* --------------- */}
 <div className=''>
 <div className={reply.length < 1 ? 'hide' : ''}>
-<button className='btn-transparent is-small text-small is-title has-text-grey-light mx-5 px-4' onClick={DisplayReply} >{!viewReply ? `View replies ${reply.length}` : "Hide replies"}</button>
+<button className='btn-transparent is-small text-small is-title has-text-grey mx-5 px-4' onClick={DisplayReply} >{!viewReply ? `View replies ${reply.length}` : "Hide replies"}</button>
 </div>
 <div className={viewReply ? 'is-flex is-flex-column mx-5 py-2' : 'hide'}>
     <CommentReplyCard reply={reply} id={props.item.id} openReply={props.openReply }/>

@@ -40,12 +40,17 @@ const ModalPostRight = (props) => {
         setId(index)
         }
 
+        // const HandleDelete = (id) => {
+        //     setComment(prevComment => {
+        //         return  prevComment.filter(item => item.id !== id)
+        //      })
+        //    }
     const commentCard = comment.length < 1 ? "No comment yet" : comment.map(item => {
-        return props.post.id === item.post_id ? <CommentCard item={item} openReply={openReply }/> : ""
+        return props.post.id === item.post_id ? <CommentCard item={item} openReply={openReply } user={props.user} /> : ""
          })
          
     return(
-<div className='column is-4 has-background-white h-100 p-0 is-flex is-flex-column'>
+<div className='column is-4 has-background-white p-0 is-flex is-flex-column'>
 <header class="modal-card-head p-0 p-3 justify-between">
 <div className='is-flex align-center is-flex-gap-md'>
 <figure className="image is-32x32 avatar">
@@ -59,7 +64,7 @@ const ModalPostRight = (props) => {
 <ModalPostCaption post={props.post} UserData={props.UserData}/>
 <hr className='navbar-divider'/>
 {/* END CAPTION */}
-<div className='is-flex is-flex-column is-flex-gap-md p-2 my-auto is-flex-grow-1 comment-container'>
+<div className='is-flex is-flex-column is-flex-gap-md p-2 my-auto is-flex-grow-1 comment-container '>
 {loader ? <AnimasiEllipsis /> : commentCard}
 </div>
 <hr className='navbar-divider'/>

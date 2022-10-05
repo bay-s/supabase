@@ -12,14 +12,6 @@ const [err,setErr] = useState(null)
 const [data,setData] = useState([])
 const [message,setMessage] = useState('')
 useEffect(() => {
-  const subscritpion = supabase
-  .from("*") // here, you can put '*' if you want to listen to changes on every table or you can put name of a specifict table
-  .on('postgres_changes', { event: '*', schema: '*' }, payload => {
-    console.log('Change received!', payload)
-    
-  })
-  .subscribe();
-
 const fetchData = async () => {
   const {data,error} = await supabase
   .from('post')
@@ -37,9 +29,6 @@ const fetchData = async () => {
   }
 }
 fetchData()
-return () => {
-  supabase.removeSubscription(subscritpion);
-};
 },[])
 
 const deletePost = async (e) => {
@@ -88,14 +77,3 @@ const postCard = data.length < 1 ? "" : data.map(item => {
 }
 
 export default Home
-
-
-// {err ? err : ""}
-// {smooth == null ? "no data fopund" : smooth.map(item => {
-//  return <div>
-//    <Link to={`/update/${item.id}`}> <p>{item.id}</p></Link>
-//    <p>{item.post_content}</p>
-//    <button data-id={item.id} onClick={deletePost}>Delete</button>
-//  </div>
-// })
-// }

@@ -18,10 +18,10 @@ const HomeProfile = (props) => {
         <div className="card-content p-2">
           <header className="is-flex align-center justify-between">
             <div className="is-flex align-center">
-              <figure className="image is-64x64 avatar">
+              <figure className="image is-48x48 avatar">
                 <img className="is-rounded" src={props.data.avatar === '' ? akun : props.data.avatar} />
               </figure>
-              <p className="card-header-title is-size-6 is-bold">
+              <p className="card-header-title is-size-7 is-bold">
                <Link to={`/profile/${props.data.uid}`} className='has-text-dark'>{props.data.fullname}</Link>
               </p>
             </div>

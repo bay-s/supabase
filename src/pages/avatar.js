@@ -14,7 +14,7 @@ const Avatar = (props) => {
             .eq('uid',id)
             if(data){
                 setUserComment(data)
-                console.log(data);
+                // console.log(data);
             }
             if(err) console.log(err);
         }

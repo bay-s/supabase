@@ -13,7 +13,7 @@ class CommentInput extends React.Component{
         }
     }
 
-       
+      
 handlerChange = (e) => {
     const {name,value} = e.target
     console.log(this.props);
@@ -49,6 +49,16 @@ UpdateTotalComment = async () => {
   .eq('id',this.props.post.id)
   if(data) console.log(data);
   if(error) console.log(error);
+}
+
+RealTime = () => {
+const subscript = supabase
+.from('comment')
+.on("INSERT",payload => {
+  console.log("REALTIME ", payload);
+  alert("REALTIME ",payload)
+})
+.subscribe()
 }
   render(){
 

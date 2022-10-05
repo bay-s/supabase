@@ -15,21 +15,21 @@ this.state = {
 
 componentDidMount(){
 this.getIdLikes()
-console.log(this.state.likes_id);
 }
 
+  
 getIdLikes = async () => {
   const id = this.props.user.uid
-  console.log(this.props.user.uid);
-  const { data, error } = await supabase
-  .from('likes')
+  const { data, error } = await supabase.from('likes')
   .select()
+  .eq('post_id',this.props.post.id)
   if(error){
     console.log(`${error} No data`);
   }
   if(data){
     console.log(data);
-    data.map(likes => {
+    data.filter(likes => {
+      console.log(likes.likes_id === id);
         if (likes.likes_id === id) {
             console.log("sama");
               this.setState({
@@ -38,6 +38,7 @@ getIdLikes = async () => {
               })
           } else {
               console.log("salah");
+              
           }
     })
   }
@@ -121,7 +122,7 @@ if(data){
 }
 render(){
 
-    const is_likes = this.state.isLikes ? <i className="fa fa-heart likes is-size-5 is-clickable"  data-id={this.props.post.id} onClick={this.addLikes}></i>
+    const is_likes = this.state.isLikes ? <i className="fa fa-heart is-size-5 is-clickable likes"  data-id={this.props.post.id} onClick={this.addLikes}></i>
     : <i className="fa fa-heart-o  is-size-5 is-clickable"  data-id={this.props.post.id} onClick={this.addLikes}></i>
     
     return(

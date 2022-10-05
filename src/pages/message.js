@@ -74,7 +74,6 @@ console.log(id);
 <MessageUserList  userData={userData}/> 
 </header>
 <div className='p-3 is-flex is-flex-column is-flex-gap-lg chat-box' style={height}>
-<MessageChatLeft />
 {message.length < 1 ? "" : message.map(msg => {
   return <MessageChatRight msg={msg}/>
 })}

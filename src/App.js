@@ -24,6 +24,8 @@ function App() {
       if (event == 'SIGNED_IN') {
         // console.log('SIGNED_IN', session)
         const { data, error } = supabase.auth.setSession(session.refresh_token)
+        setIsLogin(true)
+        setUsers(user)
         // console.log(session.refresh_token);
       }
       if (event == 'TOKEN_REFRESHED') {
@@ -31,16 +33,18 @@ function App() {
         const { data, error } = supabase.auth.setSession(session.refresh_token)
         // console.log(session.refresh_token);
       }
+      if (event == 'SIGNED_OUT') {
+        setIsLogin(false) 
+        // setUsers([])
+        console.log("logout");
+      }
     })
     if(user){
       setIsLogin(true)
       setUsers(user)
       console.log("user logged in");
-      console.log(user);
-      console.log(isLogin);
     }else{
       setIsLogin(false)
-      console.log(isLogin);
       console.log("not login");
     }
 
