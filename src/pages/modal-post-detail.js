@@ -14,7 +14,7 @@ function ModalPostDetail(props){
 <div className='columns is-multiline p-0 is-gapless  h-700px'>
 {/* START POST LEFT */}
 <div className='column is-7 h-100'>
-<img src={img} className='w-100 h-100'/>
+<img src={props.post.post_image} className='w-100 h-100'/>
 </div>
 {/* END POST LEFT */}
 {/* START POST RIGHT */}

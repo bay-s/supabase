@@ -49,7 +49,7 @@ const openModalPost = e => {
         <header className="card-header align-center justify-between px-3">
           <div className="is-flex align-center">
             <figure className="image is-32x32 avatar">
-              <img className="is-rounded" src={UserData.avatar === '' ? akun : UserData.avatar} />
+              <img className="is-rounded" src={UserData.avatar == null || '' ? akun : UserData.avatar} />
             </figure>
             <p className="card-header-title"><Link to={`/profile/${UserData.uid}`} className='has-text-dark'>{UserData.username}</Link></p>
           </div>
@@ -59,7 +59,7 @@ const openModalPost = e => {
         <div class="card-image">
           <figure className="image is-4by3">
             <img
-             src={props.data.post_image ==='' ? "https://bulma.io/images/placeholders/1280x960.png" : props.data.post_image }
+             src={props.data.post_image == null || '' ? "https://bulma.io/images/placeholders/1280x960.png" : props.data.post_image }
              className='is-clickable ' onClick={openModalPost} />
           </figure>
         </div>

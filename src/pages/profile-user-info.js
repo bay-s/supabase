@@ -12,27 +12,27 @@ const ProfileInfo = (props) => {
         <div className="is-flex  is-flex-gap-xl align-center">
          <div className="is-flex is-flex-column is-flex-gap-sm align-center">
              <figure className="image is-96x96 avatar">
-               <img className="is-rounded" src={props.data.avatar === '' ? akun : props.data.avatar} />
+               <img className="is-rounded" src={props.data.avatar == null || '' ? akun : props.data.avatar} />
              </figure>
              <h3 className="is-title is-bold is-size-5">{props.data.username}</h3>
             </div>
              <div className='is-flex is-flex-column align-start px-2'>
              <nav className="is-flex align-center justify-center is-flex-gap-xl my-2">
                  <div className="level-item has-text-centered">
-                   <div>
+                 <div className='is-flex is-flex-column is-flex-gap-sm'>
                      <p className="heading is-size-7">Post</p>
                      <p className="title is-6">{props.data.total_post < 1 ? "0" : props.data.total_post}</p>
                    </div>
                  </div>
                  <div className="level-item has-text-centered">
-                   <div>
-                     <p className="heading is-size-7">Following</p>
+                   <div className='is-flex is-flex-column is-flex-gap-sm'>
+                     <button className='button is-size-7  is-small'>Following</button>
                      <p className="title is-6">{props.data.total_following < 1 ? "0" : props.data.total_following}</p>
                    </div>
                  </div>
                  <div className="level-item has-text-centered">
-                   <div>
-                     <p className="heading is-size-7">Followers</p>
+                 <div className='is-flex is-flex-column is-flex-gap-sm'>
+                   <button className='button is-size-7 is-small'>Follower</button>
                      <p className="title is-6">{props.data.total_follower < 1 ? "0" : props.data.total_follower}</p>
                    </div>
                  </div>

@@ -8,13 +8,13 @@ super(props)
 this.state = {
     likes_id:[],
     isLikes:false,
-    total_likes:this.props.post.total_likes
 }
 }
 
 
 componentDidMount(){
 this.getIdLikes()
+console.log(this.state.likes_id);
 }
 
   
@@ -28,12 +28,12 @@ getIdLikes = async () => {
   }
   if(data){
     console.log(data);
-    data.filter(likes => {
-      console.log(likes.likes_id === id);
+    data.map(likes => {
+      this.setState({likes_id:likes.id})
+      console.log(likes.id);
         if (likes.likes_id === id) {
             console.log("sama");
               this.setState({
-                  likes_id:likes.likes_id,
                   isLikes:true
               })
           } else {
@@ -47,31 +47,24 @@ getIdLikes = async () => {
 addLikes = async (e) => {
     e.preventDefault()
     const id = this.props.post.id
-    const user_id = this.props.user.uid
+    const lid = parseInt(e.target.dataset.likes) 
+    
     if(parseFloat(e.target.dataset.id) === id){
       if(e.target.classList.contains('likes')){
-        this.setState({total_likes: this.state.total_likes - 1}, () => {
-          console.log(this.state.total_likes)
-         });
         console.log("ada like");
         e.target.classList.remove('likes')
-        await this.RemoveLikes(id)
+        this.RemoveLikes(id,lid)
         }else{
          console.log("tidakada like");
-         this.setState({total_likes: this.state.total_likes + 1}, () => {
-          console.log(this.state.total_likes)
-         });
          e.target.classList.add('likes')
-         await this.UpdateLikes(id)
+         this.UpdateLikes(id)
         }
       }
 }
 
 UpdateLikes = async (id) => {
-
-const { updata, err } = await supabase.from('post')
-.update({ total_likes:this.state.total_likes + 1})
-.eq('id',id)
+const { updata, err }= await supabase
+.rpc('likes_inc', { x: 1, row_id: id})
 if(updata){
     alert("Add likes sukes")
     console.log(updata);
@@ -97,10 +90,9 @@ const { data, error } = await supabase
   }
 }
 
-RemoveLikes = async (id) => {
-const { updata, err } = await supabase.from('post')
-.update({ total_likes:this.state.total_likes - 1})
-.eq('id',id)
+RemoveLikes = async (id,lid) => {
+  const { updata, err }= await supabase
+.rpc('likes_dec', { x: 1, row_id: id})
 if(updata){
     alert("Remove likes sukes")
     console.log(updata);
@@ -111,7 +103,7 @@ if(updata){
 const { data, error } = await supabase
 .from('likes')
 .delete()
-.eq('likes_id',this.props.user.uid)
+.eq('id',lid)
 
 if(data){
     alert("Remove likes sukes")
@@ -122,8 +114,8 @@ if(data){
 }
 render(){
 
-    const is_likes = this.state.isLikes ? <i className="fa fa-heart is-size-5 is-clickable likes"  data-id={this.props.post.id} onClick={this.addLikes}></i>
-    : <i className="fa fa-heart-o  is-size-5 is-clickable"  data-id={this.props.post.id} onClick={this.addLikes}></i>
+    const is_likes = this.state.isLikes ? <i className="fa fa-heart is-size-5 is-clickable likes"  data-likes={this.state.likes_id} data-id={this.props.post.id} onClick={this.addLikes}></i>
+    : <i className="fa fa-heart-o  is-size-5 is-clickable" data-likes={this.state.likes_id} data-id={this.props.post.id} onClick={this.addLikes}></i>
     
     return(
 <ul className='is-flex align-center is-flex-gap-md'>

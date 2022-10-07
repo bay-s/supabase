@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import Home from "./pages/Home"
-import { useEffect, useState } from "react"
+import { useEffect, useState,createContext } from "react"
 import supabase from "./supabase-config"
 import LoginPage from "./pages/login-pages"
 import RegisterPages from "./pages/register-pages"
@@ -11,7 +11,7 @@ import EditProfile from "./pages/edit-profile"
 import Message from "./pages/message"
 import MessageList from "./pages/message-list"
 
-
+const AppContext = createContext()
 function App() {
   const [users,setUsers] = useState([]);
   const [isLogin,setIsLogin] = useState(false)
@@ -71,10 +71,16 @@ function App() {
     }
   }
 
+  const value = {
+    data,
+    users,
+    openModal,
+    isLogin
+  }
 
   return (
-
-    <BrowserRouter>
+   <AppContext.Provider value={{value}}>
+        <BrowserRouter>
       <Header isLogin={isLogin} user={users} openModal={openModal}/>
       <Routes>
         <Route path="/" element={isLogin ? <Home isLogin={isLogin} data={data}/> : <LoginPage isLogin={isLogin} />} />
@@ -91,6 +97,7 @@ function App() {
 <button class="modal-close is-large" aria-label="close" onClick={openModal }></button>
 </div>
     </BrowserRouter>
+   </AppContext.Provider>
   );
 }
 
