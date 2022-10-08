@@ -207,7 +207,11 @@ textarea {
     width: 7px;
 }
   
-
+.modal-follow{
+  width: 300px;
+  background-color: white;
+  z-index: 1;
+}
 /* ====== HEADER ====== */
 
 
