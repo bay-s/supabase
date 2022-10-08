@@ -44,7 +44,19 @@ const ModalPostRight = (props) => {
         const index = e.target.dataset.index
         setId(index)
         }
-
+    
+    const DeletePost = async (e) => {
+        e.preventDefault()
+        const id = parseInt(e.target.dataset.id)
+        console.log(id);
+        if(window.confirm("Are you sure do you want to delete this post ?")){
+      const { error } = await supabase
+      .from('post')
+      .delete()
+      .eq('id', id)
+      if(!error) alert("Delete Sukses")
+        }
+    }
 
     const commentCard = comment.length < 1 ? "No comment yet" : comment.map(item => {
         return props.post.id === item.post_id ? <CommentCard item={item} openReply={openReply } user={props.user} /> : ""
@@ -54,7 +66,7 @@ const ModalPostRight = (props) => {
 <div className='column is-4 has-background-white p-0 is-flex is-flex-column'>
 <header class="modal-card-head p-0 p-3 justify-between">
 <Avatar id={props.post.author_uid} />
-{props.user.uid === props.post.author_uid ? <i class="fa fa-trash-o has-text-danger is-bold is-clickable"  data-id={props.post.id} aria-hidden="true"></i> : 
+{props.user.uid === props.post.author_uid ? <i class="fa fa-trash-o has-text-danger is-bold is-clickable"  data-id={props.post.id} aria-hidden="true" onClick={DeletePost}></i> : 
 <button class="delete" aria-label="close"></button>
 }
 </header>

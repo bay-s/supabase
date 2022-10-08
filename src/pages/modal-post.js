@@ -221,8 +221,8 @@ render(){
     return(
         <>
  <div class="modal-background"></div>
-<form onSubmit={this.uploadImage} className='is-relative'>
-          <div class="modal-card h-500px">
+<form onSubmit={this.uploadImage} className='m-5 modal-posts'>
+          <div class="modal-card h-500px mx-auto">
 <header class="modal-card-head">
 <p class="modal-card-title has-text-centered is-size-6 is-title">Create new post</p>
 <button type='submit' className={this.state.imgUpload === '' ? 'hide' : 'modal-button has-text-info is-tittle mx-3 is-size-6' }>Post</button>

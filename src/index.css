@@ -219,7 +219,7 @@ body {
   font-family: "Poppins", sans-serif !important;
 
 }
-.image-container {
+.image-container img{
   height: 100%;
   object-fit: cover;
 }
@@ -707,3 +707,20 @@ height: 550px !important;
   object-fit: cover;
 }
 /* ==== END TEXT CHAT === */
+
+
+
+/* === RESPONSIVE ===== */
+
+@media (max-width:500px){
+  .modal-image{
+    flex-direction: column;
+  }
+
+  .modal-posts .modal-card{
+    height: 550px !important;
+  }
+}
+
+
+/* === END RESPONSIVE ===== */
