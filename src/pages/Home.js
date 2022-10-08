@@ -56,7 +56,7 @@ const postCard = data.length < 1 ? "" : data.map(item => {
  return <PostCard data={item} user={props.data}/>
 })
   return (
-<div class="container mx-auto my-5">
+<div class="container mx-auto my-5 pt-3">
 {/* START COLUMNS */}
   <div class="columns is-multiline is-centered">
 {/* START COL CENTER */}

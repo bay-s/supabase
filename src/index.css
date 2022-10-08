@@ -212,6 +212,32 @@ textarea {
   background-color: white;
   z-index: 1;
 }
+
+.profile-post .card:hover img{
+  filter: brightness(0.5);
+  transition: 500ms;
+}
+
+.profile-post .card:hover .captions{
+  position: absolute;
+  left: 40%;
+  bottom: 40%;
+  opacity: 1;
+  visibility: visible;
+}
+
+.captions{
+opacity: 0;
+visibility: hidden;
+}
+
+.headers.is-fixed-top {
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 30;
+}
 /* ====== HEADER ====== */
 
 
@@ -226,18 +252,6 @@ body {
 .image-container img{
   height: 100%;
   object-fit: cover;
-}
-.header{
-/* From https://css.glass */
-/* From https://css.glass */
-/* background: rgba(84, 26, 149, 0.12);
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
-/* From https://css.glass */
-/* From https://css.glass */
-/* background: rgba(40, 2, 83, 0.08);
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5.6px);
--webkit-backdrop-filter: blur(5.6px); */
 }
 
 .avatar img{

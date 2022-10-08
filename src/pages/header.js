@@ -1,13 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import supabase from '../supabase-config'
+import Avatar from './avatar'
 import Button from './button'
 import DropDown from './dropdown'
+import NoResult from './no-result'
+
 
 
 const  Header = (props) => {
-
-
+   const [search,setSearch] = useState('')
+   const [hide,setHide] = useState(false)
+   const [dataSearch,setDataSearch] = useState([])
   const Logout = async e => {
     e.preventDefault()
     const { error } = await supabase.auth.signOut();
@@ -15,10 +19,37 @@ const  Header = (props) => {
     console.log(props.isLogin);
   }
 
+ const SearchUser = async (value) =>{
+  const { data, error } = await supabase
+  .from('users')
+  .select()
+  .ilike('username', `%${value}%`)
+  if(data){
+    setDataSearch(data)
+  }if(error){
+    console.log(`404 not found ${error.message}`);
+  }
+ }
 
+ const HandlerChange = async (e) => {
+   const {value,name} = e.target
+   setSearch(value)
+   if(value.length < 1){
+    setHide(false)
+   }else{
+    setHide(true)
+   }
+
+   if(value.length < 1) {
+    return
+  }else{
+    SearchUser(value)
+  }
+
+ }
 return(
-<header className='header py-3 shadow ' >
-<nav class="navbar is-fixed-top mx-5 is-flex justify-between bg-transparent" role="navigation" aria-label="main navigation">
+<header className='headers is-fixed-top py-3 has-background-white shadow' >
+<nav class="navbar  mx-5 is-flex justify-between bg-transparent" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
      <h2 className='is-size-3 has-text-dark has-text-weight-bold main-title'>
 <Link to='/' className='has-text-dark pt-1'>
@@ -27,18 +58,27 @@ return(
      </h2>
   </div>
 
-{/* 
 
 <div className={props.isLogin ? 'mx-auto search' : 'hide' }>
-  <form className='is-flex mt-4'>
+  <form className={hide ? 'is-flex mt-4 dropdown is-active z-index' : 'is-flex mt-4 dropdown'} onSubmit={SearchUser}>
   <div class="control has-icons-left has-icons-right">
-    <input class="input " type="text" placeholder="search user" />
-    <span class="icon is-small is-left">
-      <i class="fa fa-search "></i>
+    <input class="input " type="text" placeholder="Search user" autocomplete="off" name='search' onChange={HandlerChange }/>
+    <span class="icon is-small is-right">
+      <i class="fa fa-search is-clickable"></i>
     </span>
   </div>
+  <div class="dropdown-menu w-100" id="dropdown-menu" role="menu">
+    <div class="dropdown-content px-2">
+    {dataSearch.length < 1 ? <NoResult /> : 
+    dataSearch.map(user => {
+      return <Avatar id={user.uid}/>
+     })
+    }
+    </div>
+  </div>
   </form>
-</div> */}
+</div> 
+
 
 
 <div className='is-flex is-align-items-center p-0 m-0 mx-5 me-auto'>
@@ -68,42 +108,3 @@ return(
 
 export default Header;
 
-
-
-
-
-
-
-
-{/* <nav class="navbar shadow " role="navigation" aria-label="main navigation">
-  <div className='container'>
-  <div class="navbar-brand">
-    <Link class="navbar-item" to='/'>
-      <h3 className='main-title is-bold is-size-3 has-text-info'>Ask It</h3>
-    </Link>
-
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-
-  <div class="navbar-menu">
-    <div class="navbar-start">
-
-    <Link to="/" className='navbar-item'>Home</Link>
-    <Link to="/login/" className='navbar-item'>Login</Link>
-    <Link to="/register"  className='navbar-item'>Register</Link>
-    <Link to="/create"  className='navbar-item'>Create New Smoothie</Link>
-
-    </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        {props.isLogin ? <DropDown Logout={Logout} user={props.user} /> : <Button />}
-      </div>
-    </div>
-  </div>
-  </div>
-</nav> */}

@@ -16,6 +16,7 @@ function PostCardUser(props){
 
      return () => clearInterval(interval)
   })
+
     return(
       loader ? <div className='column is-4'>
         <div class="card loading">
@@ -28,7 +29,7 @@ function PostCardUser(props){
     </div>
       </div> :
 <div className="column is-4">      
-      <div className="card post-card">
+      <div className="card post-card is-relative">
         <div class="card-image">
           <figure className="image is-4by3">
             <img className='is-clickable'
@@ -36,6 +37,16 @@ function PostCardUser(props){
             />
           </figure>
         </div>
+       <div className='captions is-flex align-center is-flex-gap-md'>
+        <div className='is-flex align-center is-flex-gap-md'>
+       <i class="fa fa-heart has-text-white" aria-hidden="true"></i>
+       <span className='has-text-white is-size-6 is-bold'>{props.data.total_likes < 1 ? "0" : props.data.total_likes}</span>
+        </div>
+        <div className='is-flex align-center is-flex-gap-md'>
+       <i class="fa fa-comment has-text-white is-size-5" aria-hidden="true"></i>
+       <span className='has-text-white is-size-6 is-bold'>{props.data.total_comment < 1 ? "0" : props.data.total_comment}</span>
+        </div>
+       </div>
   </div>   
 </div>
 // end column card

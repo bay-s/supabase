@@ -1,23 +1,12 @@
 import React, { useEffect, useState } from  'react'
 import { useParams } from 'react-router-dom'
 import supabase from '../supabase-config'
+import Avatar from './avatar'
 import MessageAvatar from './message-chat-avatar'
 import MessageAvatarHeader from './message-chat-header'
 import MessageChatLeft from './message-chat-left'
 import MessageChatRight from './message-chat-right'
 import MessageReplyInput from './message-reply-input'
-
-
-
-
-// function MessageList(props){
-//   const {id} = useParams()
-//   return(
-// <MessageListCard id={id} data={props.data}/>
-//   )
-// }
-
-
 
 class MessageList extends React.Component{
 constructor(){
@@ -64,9 +53,7 @@ fetchMessageReply = async id => {
   .eq('sender_id',id)
   if(data){
     this.setState({reply:data})
-    // console.log(data);
     const test = []
-console.log(data);
     data.forEach(m => {
       const id = m.owner_id
       // test.push(id)

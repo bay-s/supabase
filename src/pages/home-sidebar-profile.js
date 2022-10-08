@@ -19,15 +19,12 @@ const HomeProfile = (props) => {
         <header className="banner" style={banner}></header>
         <div className="card-content p-2">
           <header className="is-flex align-center justify-between">
-            <div className="is-flex align-center">
               <figure className="image is-48x48 avatar">
                 <img className="is-rounded" src={value.data.avatar == null || '' ? akun : value.data.avatar} />
               </figure>
               <p className="card-header-title is-size-7 is-bold">
                <Link to={`/profile/${value.data.uid}`} className='has-text-dark'>{value.data.fullname}</Link>
               </p>
-            </div>
-            <i className="fa fa-ellipsis-h is-clickable"></i>
           </header>
           <div className="content p-0 p-2 ">
             <nav

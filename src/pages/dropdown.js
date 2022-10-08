@@ -10,11 +10,6 @@ function DropDown(props){
     setOpen(!open)
   }
 
-  useEffect(() => {
-    // document.addEventListener('mousedown',function(e){
-    //   setOpen(false)
-    // })
-  },[])
     return(
         <div className={open ? "dropdown is-center is-active" : "dropdown"}>
   <div class="dropdown-trigger" >

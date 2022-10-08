@@ -53,27 +53,6 @@ const fetchPost = async () => {
 }
 
 
-const deletePost = async (e) => {
-  e.preventDefault()
-  const id = e.target.dataset.id
-  console.log(id);
-  if(window.confirm("Are you sure want to delete this ?")){
-    const {data,error} = await supabase
-    .from('post')
-    .delete()
-    .match('id',id)
-    if(error){
-    console.log(error);
-    }
-    if(data){
-      alert("delete sukses")
-      console.log(data);
-    }
-  }else{
-    console.log("nothing");
-  }
-}
-
     const banner =  {
         backgroundImage:`url(${banners})`,
         height:`${200}px`
@@ -109,9 +88,8 @@ const deletePost = async (e) => {
 </div>
 {/* END TABS */}
 {/* POST CONTAINER */}
-<div className='columns is-multiline my-2 p-0 px-5'>
+<div className='columns is-multiline my-2 p-0 px-5 profile-post'>
 {postCard === '' ? <NoPost /> : postCard}
-
 </div>
 {/* END POST CONTAINER */}
        </div>
