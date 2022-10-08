@@ -28,9 +28,9 @@ const Avatar = (props) => {
 userComment.length < 1 ? "" : userComment.map(m => {
     return <div className='is-flex align-center is-flex-gap-md'>
     <figure className="image is-32x32 avatar">
-     <img className="is-rounded" src={m.avatar === '' ? akun : m.avatar} />
+     <img className="is-rounded" src={m.avatar == null || '' ? akun : m.avatar} />
     </figure>
-    <Link to={`/profile/${m.author_id}`} className='has-text-dark is-size-7 is-title'>{m.username}</Link>
+    <Link to={`/profile/${m.uid}`} className='has-text-dark is-size-7 is-title'>{m.username}</Link>
 </div>
 })
     )

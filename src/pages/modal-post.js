@@ -207,6 +207,17 @@ render(){
         height:`${400}px`
     }
 
+    const data = {
+      pesan:this.state.pesan,
+      sukses:this.state.sukses,
+      isError:this.state.isError,
+      handlerChange:this.handlerChange,
+      imgUpload:this.state.imgUpload,
+      selectValue:this.selectValue,
+      value:this.state.value,
+      selectOption:this.state.selectOption
+    }
+
     return(
         <>
  <div class="modal-background"></div>
@@ -223,7 +234,7 @@ render(){
 <Loading isUpload={this.state.isUpload} />
 </div>
 </section>
-<ModalPostImage pesan={this.state.pesan} sukses={this.state.sukses} isError={this.state.isError} handlerChange={this.handlerChange} dataUser={this.props.dataUser} imgUpload={this.state.imgUpload} selectValue={this.selectValue} value={this.state.value} selectOption={this.state.selectOption}/>
+<ModalPostImage data={data} />
 </div>
           </form>
         </>

@@ -7,6 +7,8 @@ import CommentInput from './comment-input'
 import LoaderCard from './loader'
 import ModalPostDetail from './modal-post-detail'
 import timeDifference from './timestamp'
+import Avatar from './avatar'
+
 
 function PostCard(props){
 
@@ -46,13 +48,8 @@ const openModalPost = e => {
 <>      
 <div className="column">      
       <div className="card">
-        <header className="card-header align-center justify-between px-3">
-          <div className="is-flex align-center">
-            <figure className="image is-32x32 avatar">
-              <img className="is-rounded" src={UserData.avatar == null || '' ? akun : UserData.avatar} />
-            </figure>
-            <p className="card-header-title"><Link to={`/profile/${UserData.uid}`} className='has-text-dark'>{UserData.username}</Link></p>
-          </div>
+        <header className="card-header align-center justify-between p-2">
+          <Avatar id={props.data.author_uid} />
           <i className="fa fa-ellipsis-h"></i>
         </header>
 {/* end header  */}

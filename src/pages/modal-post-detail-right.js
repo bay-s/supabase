@@ -10,6 +10,7 @@ import AnimasiEllipsis from './animasi-ellips'
 import timeDifference from './timestamp'
 import CommentReply from './commen-input-reply'
 import { AppContext } from '../App'
+import Avatar from './avatar'
 
 
 
@@ -52,12 +53,7 @@ const ModalPostRight = (props) => {
     return(
 <div className='column is-4 has-background-white p-0 is-flex is-flex-column'>
 <header class="modal-card-head p-0 p-3 justify-between">
-<div className='is-flex align-center is-flex-gap-md'>
-<figure className="image is-32x32 avatar">
- <img className="is-rounded" src={props.UserData.avatar == null || '' ? akun : props.UserData.avatar} />
-</figure>
-<Link to={`/profile/${props.UserData.uid}`} className='has-text-dark'>{props.UserData.username}</Link>
-</div>
+<Avatar id={props.post.author_uid} />
 {props.user.uid === props.post.author_uid ? <i class="fa fa-trash-o has-text-danger is-bold is-clickable"  data-id={props.post.id} aria-hidden="true"></i> : 
 <button class="delete" aria-label="close"></button>
 }
