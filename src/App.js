@@ -11,7 +11,8 @@ import EditProfile from "./pages/edit-profile"
 import Message from "./pages/message"
 import MessageList from "./pages/message-list"
 
-const AppContext = createContext()
+export const AppContext = createContext()
+
 function App() {
   const [users,setUsers] = useState([]);
   const [isLogin,setIsLogin] = useState(false)
@@ -35,7 +36,7 @@ function App() {
       }
       if (event == 'SIGNED_OUT') {
         setIsLogin(false) 
-        // setUsers([])
+        window.location.href = "/";
         console.log("logout");
       }
     })

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState ,useContext} from 'react'
 import supabase from '../supabase-config'
 import CommentCard from './comment-card'
 import CommentInput from './comment-input'
@@ -9,13 +9,17 @@ import ModalPostCaption from './modal-post-caption'
 import AnimasiEllipsis from './animasi-ellips'
 import timeDifference from './timestamp'
 import CommentReply from './commen-input-reply'
+import { AppContext } from '../App'
+
+
 
 const ModalPostRight = (props) => {
     const [comment,setComment] = useState([])
     const [loader,setLoader] = useState(true)
     const [id,setId] = useState('')
     const [open,setOpen] = useState(false)
-    
+    const {value} = useContext(AppContext)
+
     useEffect(() => {
         getComment()
     },[])
@@ -40,11 +44,7 @@ const ModalPostRight = (props) => {
         setId(index)
         }
 
-        // const HandleDelete = (id) => {
-        //     setComment(prevComment => {
-        //         return  prevComment.filter(item => item.id !== id)
-        //      })
-        //    }
+
     const commentCard = comment.length < 1 ? "No comment yet" : comment.map(item => {
         return props.post.id === item.post_id ? <CommentCard item={item} openReply={openReply } user={props.user} /> : ""
          })
@@ -54,11 +54,13 @@ const ModalPostRight = (props) => {
 <header class="modal-card-head p-0 p-3 justify-between">
 <div className='is-flex align-center is-flex-gap-md'>
 <figure className="image is-32x32 avatar">
- <img className="is-rounded" src={props.UserData.avatar == null ? akun : props.UserData.avatar} />
+ <img className="is-rounded" src={props.UserData.avatar == null || '' ? akun : props.UserData.avatar} />
 </figure>
 <Link to={`/profile/${props.UserData.uid}`} className='has-text-dark'>{props.UserData.username}</Link>
 </div>
+{props.user.uid === props.post.author_uid ? <i class="fa fa-trash-o has-text-danger is-bold is-clickable"  data-id={props.post.id} aria-hidden="true"></i> : 
 <button class="delete" aria-label="close"></button>
+}
 </header>
 {/* START CAPTION */}
 <ModalPostCaption post={props.post} UserData={props.UserData}/>
@@ -80,7 +82,3 @@ const ModalPostRight = (props) => {
 
 export default ModalPostRight;
 
-
-// {reply ? <ReplyComment post_id={props.post.post_id} total_comment={props.post.total_comment} user_id={props.post.user_id} dataUser={props.dataUser} com_id={comid} author_id={author} user={user} />
-// : <PostComment post_id={props.post.post_id} total_comment={props.post.total_comment} user_id={props.user_id} dataUser={props.dataUser}/> 
-// }

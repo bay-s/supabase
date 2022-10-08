@@ -7,10 +7,10 @@ import HomeSidebar from './home-sidebar'
 
 
 const Home = (props) => {
-
 const [err,setErr] = useState(null)
 const [data,setData] = useState([])
 const [message,setMessage] = useState('')
+
 useEffect(() => {
 const fetchData = async () => {
   const {data,error} = await supabase
@@ -66,7 +66,7 @@ const postCard = data.length < 1 ? "" : data.map(item => {
 {/* END COL CENTER */}
 {/* START COL RIGHT  */}
 <div class="column is-one-quarter py-5">
-<HomeSidebar data={props.data}/>
+<HomeSidebar />
 </div>
 {/* END COL RIGHT  */}
   </div>
