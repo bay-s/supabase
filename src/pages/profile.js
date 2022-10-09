@@ -62,7 +62,7 @@ const fetchData = async () => {
 <div class="column is-10 box is-centered p-0 mx-auto">
 <div class="banner" style={banner}></div>
 {/* OFILE INFO  */}
-<ProfileInfo key={data} data={data} id={id} user={props.user}/>
+<ProfileInfo key={id} data={data} id={id} user={props.user}/>
 {/* END PROFILE INFO */}
     {/* tabs*/}
 <div className="tabs is-centered mx-5">
