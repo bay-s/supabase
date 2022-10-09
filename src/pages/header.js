@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import supabase from '../supabase-config'
+import AnimasiEllipsis from './animasi-ellips'
 import Avatar from './avatar'
 import Button from './button'
 import DropDown from './dropdown'
@@ -12,6 +13,20 @@ const  Header = (props) => {
    const [search,setSearch] = useState('')
    const [hide,setHide] = useState(false)
    const [dataSearch,setDataSearch] = useState([])
+   const [loader,setLoader] = useState(true)
+   useEffect(() => {
+      document.addEventListener('click',function(e){
+        if(!e.target.classList.contains('input')){
+          console.log("Test");
+          setHide(false)
+        }else{
+          console.log("oke");
+          setHide(true)
+          setSearch('')
+        }
+
+      })
+   },[])
   const Logout = async e => {
     e.preventDefault()
     const { error } = await supabase.auth.signOut();
@@ -26,6 +41,8 @@ const  Header = (props) => {
   .ilike('username', `%${value}%`)
   if(data){
     setDataSearch(data)
+    console.log(data);
+    console.log(dataSearch);
   }if(error){
     console.log(`404 not found ${error.message}`);
   }
@@ -36,6 +53,7 @@ const  Header = (props) => {
    setSearch(value)
    if(value.length < 1){
     setHide(false)
+    setDataSearch([])
    }else{
     setHide(true)
    }
@@ -47,6 +65,8 @@ const  Header = (props) => {
   }
 
  }
+
+
 return(
 <header className='headers is-fixed-top py-3 has-background-white shadow' >
 <nav class="navbar  mx-5 is-flex justify-between bg-transparent" role="navigation" aria-label="main navigation">
@@ -61,14 +81,16 @@ return(
 
 <div className={props.isLogin ? 'mx-auto search' : 'hide' }>
   <form className={hide ? 'is-flex mt-4 dropdown is-active z-index' : 'is-flex mt-4 dropdown'} onSubmit={SearchUser}>
-  <div class="control has-icons-left has-icons-right">
-    <input class="input " type="text" placeholder="Search user" autocomplete="off" name='search' onChange={HandlerChange }/>
-    <span class="icon is-small is-right">
-      <i class="fa fa-search is-clickable"></i>
+  <div className="control has-icons-left has-icons-right">
+    <input className="input " type="text" placeholder="Search user" autocomplete="off" name='search' onChange={HandlerChange }/>
+    <span className="icon is-small is-right">
+      {!hide ?  <i className="fa fa-search is-clickable"></i> :
+      <i className="fa fa-times is-clickable" aria-hidden="true" ></i>
+      }
     </span>
   </div>
-  <div class="dropdown-menu w-100" id="dropdown-menu" role="menu">
-    <div class="dropdown-content px-2">
+  <div className="dropdown-menu w-100" id="dropdown-menu" role="menu">
+    <div className="dropdown-content px-2">
     {dataSearch.length < 1 ? <NoResult /> : 
     dataSearch.map(user => {
       return <Avatar key={search} id={user.uid}/>

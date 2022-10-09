@@ -12,11 +12,11 @@ constructor(){
     }
 }
 
-async componentDidMount(){
+ componentDidMount(){
     this.SearchUser(this.props.search) 
 }
-async componentWillReceiveProps(){
-    this.SearchUser(this.props.search) 
+componentWillReceiveProps(){
+    // this.SearchUser(this.props.search) 
 }
 
  SearchUser = async (value) =>{
