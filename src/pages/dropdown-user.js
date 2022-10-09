@@ -12,20 +12,22 @@ constructor(){
     }
 }
 
-componentDidMount(){
+async componentDidMount(){
     this.SearchUser(this.props.search) 
 }
-componentDidUpdate(){
+async componentWillReceiveProps(){
     this.SearchUser(this.props.search) 
 }
+
  SearchUser = async (value) =>{
     const { data, error } = await supabase
     .from('users')
     .select()
     .ilike('username', `%${value}%`)
     if(data){
-      this.setState({DataSearch:data})
+      this.setState({dataSearch:data})
       console.log(data);
+      console.log(this.state.dataSearch );
     }if(error){
       console.log(`404 not found ${error.message}`);
     }
@@ -37,8 +39,7 @@ componentDidUpdate(){
             this.state.dataSearch.length < 1 ? <NoResult /> : 
             this.state.dataSearch.map(user => {
               return <Avatar id={user.uid}/>
-             })
-    
+             }) 
 )
     }
 }

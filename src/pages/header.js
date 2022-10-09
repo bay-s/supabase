@@ -71,7 +71,7 @@ return(
     <div class="dropdown-content px-2">
     {dataSearch.length < 1 ? <NoResult /> : 
     dataSearch.map(user => {
-      return <Avatar id={user.uid}/>
+      return <Avatar key={search} id={user.uid}/>
      })
     }
     </div>

@@ -146,6 +146,12 @@ table {
   -ms-animation: fadeIn 1s   !important;
 }
 
+.dropdown-content:hover .avatars{
+  background-color: rgba(128, 128, 128, 0.301);
+  transition: 250ms;
+  padding: 5px;
+  cursor: pointer;
+}
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
