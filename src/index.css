@@ -227,7 +227,7 @@ textarea {
 .profile-post .card:hover .captions{
   position: absolute;
   left: 40%;
-  bottom: 40%;
+  bottom: 45%;
   opacity: 1;
   visibility: visible;
 }
@@ -235,6 +235,7 @@ textarea {
 .captions{
 opacity: 0;
 visibility: hidden;
+height: 0;
 }
 
 .headers.is-fixed-top {

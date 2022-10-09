@@ -68,11 +68,11 @@ const  Header = (props) => {
 
 
 return(
-<header className='headers is-fixed-top py-3 has-background-white shadow' >
-<nav class="navbar  mx-5 is-flex justify-between bg-transparent" role="navigation" aria-label="main navigation">
+<header className='headers is-fixed-top py-2 has-background-white shadow' >
+<nav class="navbar mx-5 is-flex align-center justify-between bg-transparent" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
      <h2 className='is-size-3 has-text-dark has-text-weight-bold main-title'>
-<Link to='/' className='has-text-dark pt-1'>
+<Link to='/' className='has-text-dark '>
         Simple Sosmed
 </Link>
      </h2>
