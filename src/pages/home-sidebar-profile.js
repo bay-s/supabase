@@ -28,25 +28,19 @@ const HomeProfile = (props) => {
           </header>
           <div className="content p-0 p-2 ">
             <nav
-              className="is-flex align-center justify-center is-flex-gap-xl my-2"
+              className="is-flex align-center justify-evenly is-flex-gap-xl my-2 sidebar-text"
             >
-              <div className="level-item has-text-centered">
-                <div>
-                  <p className="heading">Post</p>
-                  <p className="title is-5 is-bold">{value.data.total_post < 1 ? "0" : value.data.total_post}</p>
+            <div className="is-flex is-flex-column align-center ">
+                  <p className="is-size-7 is-title ">Post</p>
+                  <p className="title is-6 is-bold">{value.data.total_post < 1 ? "0" : value.data.total_post}</p>
+             </div>
+              <div className="is-flex is-flex-column align-center">
+                  <p className="is-size-7 is-title">Following</p>
+                  <p className="title is-6 is-bold">{value.data.total_following < 1 ? "0" : value.data.total_following}</p>
                 </div>
-              </div>
-              <div className="level-item has-text-centered">
-                <div>
-                  <p className="heading">Following</p>
-                  <p className="title is-5 is-bold">{value.data.total_following < 1 ? "0" : value.data.total_following}</p>
-                </div>
-              </div>
-              <div className="level-item has-text-centered">
-                <div>
-                  <p className="heading">Followers</p>
-                  <p className="title is-5 is-bold">{value.data.total_follower < 1 ? "0" : value.data.total_follower}</p>
-                </div>
+              <div className="is-flex is-flex-column align-center">
+              <p className="is-size-7 is-title">Followers</p>
+                  <p className="title is-6 is-bold">{value.data.total_follower < 1 ? "0" : value.data.total_follower}</p>
               </div>
             </nav>
           </div>

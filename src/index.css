@@ -750,6 +750,13 @@ height: 550px !important;
   transition: 500ms;
 }
 
+@media (max-width:900px){
+  .sidebar-text p{
+font-size: 11px !important;
+
+  }
+}
+
 /* === RESPONSIVE ===== */
 @media (max-width:516px){
 
