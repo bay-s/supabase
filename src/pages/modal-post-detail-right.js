@@ -58,7 +58,7 @@ const ModalPostRight = (props) => {
         }
     }
 
-    const commentCard = comment.length < 1 ? "No comment yet" : comment.map(item => {
+    const commentCard = comment.length < 1 ? <span className='mx-auto text-center'>No comment yet</span> : comment.map(item => {
         return props.post.id === item.post_id ? <CommentCard item={item} openReply={openReply } user={props.user} /> : ""
          })
          

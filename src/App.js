@@ -10,6 +10,8 @@ import ModalPosts from "./pages/modal-post"
 import EditProfile from "./pages/edit-profile"
 import Message from "./pages/message"
 import MessageList from "./pages/message-list"
+import HeaderBottom from "./pages/header-bottom"
+
 
 export const AppContext = createContext()
 
@@ -83,6 +85,7 @@ function App() {
    <AppContext.Provider value={{value}}>
         <BrowserRouter>
       <Header isLogin={isLogin} user={users} openModal={openModal}/>
+      <HeaderBottom isLogin={isLogin} user={users} openModal={openModal}/>
       <Routes>
         <Route path="/" element={isLogin ? <Home isLogin={isLogin} data={data}/> : <LoginPage isLogin={isLogin} />} />
         <Route path="/message-list/" element={isLogin ? <MessageList data={data}/> : <LoginPage isLogin={isLogin} />} />

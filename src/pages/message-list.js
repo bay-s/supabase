@@ -99,7 +99,8 @@ await this.fetchMessageReply(id)
 
   const height = {height:`${450}px`}
     return(
-        <div className='column is-8 is-centered mx-auto p-0 my-5 pt-2'>
+   <div className='container my-5 pt-2'>
+          <div className='column is-8 is-centered mx-auto p-0 my-5 pt-2'>
         <div className='container'>
           <div className='columns is-multiline h-100'>
     <div className='column is-one-third p-0'>
@@ -155,6 +156,7 @@ return <MessageChatLeft msg={msg} />
     </div>
     {/* END CONTAINER */}
     </div>
+   </div>
     )
   }
 }

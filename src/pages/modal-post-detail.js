@@ -9,11 +9,12 @@ import ModalPostRight from './modal-post-detail-right';
 function ModalPostDetail(props){
 
     return(
+<div className='container my-5'>
 <div className='column is-10 mx-auto is-centered'>
-<div class="modal-card w-100 mx-auto">
-<div className='columns is-multiline p-0 is-gapless  h-700px'>
+<div class="modal-card w-100 mx-auto h-100">
+<div className='is-flex h-700px is-flex-column-mobile'>
 {/* START POST LEFT */}
-<div className='column is-7 h-100'>
+<div className='column is-7 h-100 p-0'>
 <img src={props.post.post_image} className='w-100 h-100'/>
 </div>
 {/* END POST LEFT */}
@@ -23,6 +24,7 @@ function ModalPostDetail(props){
 </div>
   </div>
 </div>
+</div>
     )
 
 }
@@ -30,3 +32,4 @@ function ModalPostDetail(props){
 export default ModalPostDetail;
 
 
+// columns is-multiline p-0 is-gapless  

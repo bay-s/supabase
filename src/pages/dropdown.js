@@ -11,9 +11,9 @@ function DropDown(props){
   }
 
     return(
-        <div className={open ? "dropdown is-center is-active" : "dropdown"}>
+        <div className="dropdown is-center is-right is-hoverable">
   <div class="dropdown-trigger" >
-    <button class="button " aria-haspopup="true" aria-controls="dropdown-menu" onClick={openMenu}>
+    <button class="button " aria-haspopup="true" aria-controls="dropdown-menu" >
       <span> <i className="fa fa-user-o" aria-hidden="true"></i></span>
       <span className="icon is-small">
         <i className="fa fa-angle-down open-menus" aria-hidden="true"></i>

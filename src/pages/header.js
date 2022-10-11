@@ -79,10 +79,10 @@ return(
   </div>
 
 
-<div className={props.isLogin ? 'mx-auto search' : 'hide' }>
+<div className={props.isLogin ? 'mx-auto search is-hidden-mobile' : 'hide' }>
   <form className={hide ? 'is-flex mt-4 dropdown is-active z-index' : 'is-flex mt-4 dropdown'} onSubmit={SearchUser}>
   <div className="control has-icons-left has-icons-right">
-    <input className="input " type="text" placeholder="Search user" autocomplete="off" name='search' onChange={HandlerChange }/>
+    <input className="input " type="text" placeholder="Search user" autoComplete="off" name='search' onChange={HandlerChange }/>
     <span className="icon is-small is-right">
       {!hide ?  <i className="fa fa-search is-clickable"></i> :
       <i className="fa fa-times is-clickable" aria-hidden="true" ></i>
@@ -103,7 +103,7 @@ return(
 
 
 
-<div className='is-flex is-align-items-center p-0 m-0 mx-5 me-auto'>
+<div className=' is-align-items-center p-0 m-0 mx-5 me-auto headers-top'>
 <ul className='is-flex is-align-items-center mt-2 mx-2 right-nav'>
   <li className='navbar-item'><Link to='/'>
   <i  className="fa fa-home has-text-dark has-text-weight-bold is-size-5" aria-hidden="true"></i>
