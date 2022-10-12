@@ -57,7 +57,10 @@ const openModalPost = e => {
           <figure className="image is-4by3">
             <img
              src={props.data.post_image == null || '' ? "https://bulma.io/images/placeholders/1280x960.png" : props.data.post_image }
-             className='is-clickable ' onClick={openModalPost} />
+             className='is-clickable is-hidden-mobile' onClick={openModalPost} />
+          <img
+             src={props.data.post_image == null || '' ? "https://bulma.io/images/placeholders/1280x960.png" : props.data.post_image }
+             className='is-clickable is-hidden-tablet'  />
           </figure>
         </div>
         <div className="card-content p-2">

@@ -9,11 +9,19 @@ import { AppContext } from '../App'
 const HomeProfile = (props) => {
     const {value} = useContext(AppContext)
 
-    const banner =  {
-        backgroundImage:`url(${banners})`,
-        height:`${120}px`
+    let banner;
+    if(value.data.banner !== null){
+      banner = {
+          backgroundImage:`url(${value.data.banner})`,
+          height:`${120}px`
       }
-
+  }else{
+      banner = {
+          backgroundImage:`url(${banners})`,
+          height:`${120}px`
+      }
+  }
+  
     return(
  <div className="card">
         <header className="banner" style={banner}></header>

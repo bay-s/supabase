@@ -31,6 +31,9 @@ const fetchData = async () => {
   }
 }
 
+      // const postCard = post.length < 1  ? "" : post.map(item => {
+      //   return <PostCardUser key={post} data={item} />
+      //  })
 
     return(
 <div className='container m-4 mx-auto pt-4' >
@@ -64,7 +67,7 @@ const fetchData = async () => {
 {/* END POST CONTAINER */}
        </div>
        {/* END COLUMN */}
-     </div>
+  </div>
     )
 }
 

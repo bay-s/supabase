@@ -828,6 +828,12 @@ font-size: 11px !important;
   .user-avatar nav p {
     font-size: 14px !important; 
   }
+
 }
 
+@media (max-width:300px){
+.modal-follow{
+  width: 230px !important;
+}
+}
 /* === END RESPONSIVE ===== */

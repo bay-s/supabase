@@ -44,8 +44,7 @@ function PostCardUser(props){
         </div>
       </div>
     </div>
-      </div> :
-
+      </div> : 
 post.length < 1 ? <NoPost /> : post.map(item => {
   return <div className="column is-4">      
   <div className="card post-card is-relative">
