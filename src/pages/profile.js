@@ -1,37 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import banners from '../banner2.jpg'
 import supabase from '../supabase-config'
 import { Link, useParams } from 'react-router-dom'
-import test3 from '../banner.jpg'
 import ProfileInfo from './profile-user-info'
 import PostCardUser from './post-card-user'
-import NoPost from './no-post'
+import Banner from './banner'
+import BannerUser from './banner-user'
+
 
 const Profile = (props) => {
 const {id} = useParams()
 const [err,setErr] = useState(false)
 const [data,setData] = useState([])
-const [post,setPost] = useState([])
-const fetchPost = async () => {
-  const {data,error} = await supabase
-  .from('post')
-  .select()
-  .eq('author_uid',id)
-  .select()
-  if(error){
-    setErr("Has some error")
-    console.log(error);
-  }
-  if(data){
-    setPost(data)
-    setErr(false)
-    console.log(data);
-  }
-}
 
 useEffect(() => {
 fetchData()
-// fetchPost()
 },[])
 
 const fetchData = async () => {
@@ -49,18 +31,11 @@ const fetchData = async () => {
   }
 }
 
-    const banner =  {
-        backgroundImage:`url(${banners})`,
-        height:`${200}px`
-      }
 
-      // const postCard = post.length < 1  ? "" : post.map(item => {
-      //   return <PostCardUser key={post} data={item} />
-      //  })
     return(
 <div className='container m-4 mx-auto pt-4' >
 <div class="column is-10 box is-centered p-0 mx-auto">
-<div class="banner" style={banner}></div>
+{id === props.user.uid ? <Banner  user={props.user} data={data}/> : <BannerUser user={props.user} data={data}/>}
 {/* OFILE INFO  */}
 <ProfileInfo key={id} data={data} id={id} user={props.user}/>
 {/* END PROFILE INFO */}
@@ -84,7 +59,6 @@ const fetchData = async () => {
 {/* END TABS */}
 {/* POST CONTAINER */}
 <div className='columns is-multiline my-2 p-0 px-5 profile-post'>
-{/* {postCard === '' ? <NoPost /> : postCard} */}
 <PostCardUser id={id} />
 </div>
 {/* END POST CONTAINER */}

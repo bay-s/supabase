@@ -245,10 +245,3 @@ render(){
 
 export default ModalPosts;
 
-
-{/* <span className={this.state.imgArr.length < 1 ? 'hide' : 'add-more'}>
-<label class="file-label">
-<input class="file-input is-clickable" type="file" name="resume" onChange={this.ImageChange}></input>
-<i class="fa fa-plus-square-o has-text-danger is-size-1 is-clickable is-bold" aria-hidden="true"></i>
-</label>
-</span> */}

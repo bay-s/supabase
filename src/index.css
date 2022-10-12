@@ -245,16 +245,12 @@ height: 0;
   top: 0;
   z-index: 30;
 }
-/* .header-bottom.is-fixed-bottom{
-  left: 0;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  z-index: 30;
-} */
-/* ====== HEADER ====== */
 
-
+.banner-upload{
+  position: absolute !important;
+  top: 10px;
+  right: 10px;
+}
 /* ====== END HEADER ====== */
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Noto+Sans:wght@500&family=Outfit:wght@300&family=Pacifico&family=Poppins:wght@200&display=swap");
 /* END RESET */
@@ -332,13 +328,6 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
   /* position: relative; */
 }
 
-/* .avatar{
-  position: absolute !important;
- top: 32%;
-  left: 44%;
-  border: 2px solid white;
-  border-radius: 50%;
-} */
 .btn-transparent{
 background-color: transparent !important;
 box-shadow: none !important;
