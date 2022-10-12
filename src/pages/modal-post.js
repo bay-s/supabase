@@ -25,6 +25,7 @@ constructor(props){
         url:'',
         total_posts:'',
         value:'',
+        imgName:'',
         selectOption:['--Select Category--','Anime','Manga','Games','Sports','Technology','Design','Fashion']
     }
 }
@@ -98,7 +99,7 @@ selectValue= (e) => {
     return{
  value:prev.value = e.target.value
     }
-    console.log(this.state.value);
+
   })
 
 }
@@ -116,10 +117,13 @@ ImageChange = event => {
 console.log(event.target.files);
 if (event.target.files && event.target.files[0]) {
   let img = event.target.files[0];
+  const randName =  (Math.random() + 1).toString(36).substring(3);
+  const imgStr = img.name.split(".")
   this.setState({
     imgUpload: URL.createObjectURL(img),
     url:img,
-    imgArr:img
+    imgArr:img,
+    imgName:`${randName}.${imgStr[1]}`
   });
 
 }
@@ -162,7 +166,7 @@ uploadImage = async e => {
   this.setState({loading:true})
   const { data, error} = await supabase.storage
   .from('images')
-  .upload(`public/${this.state.url.name}`, this.state.url, {
+  .upload(`public/${this.state.imgName}`, this.state.url, {
     cacheControl: '604800',
     upsert: false
   })
@@ -191,7 +195,7 @@ getURL = async (url) => {
 const { data,error } = supabase
   .storage
   .from('images')
-  .getPublicUrl(`public/${this.state.url.name}`)
+  .getPublicUrl(`public/${this.state.imgName}`)
   if(data){
     const imgUrl= data.publicURL;
     console.log(imgUrl);

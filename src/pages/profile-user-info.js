@@ -45,7 +45,7 @@ const ProfileInfo = (props) => {
 
 
     return(
-<div className="is-flex justify-between align-center my-1 p-3">
+<div className="is-flex justify-between align-center my-1 p-3 user-info">
       {props.id === value.data.uid ? <ProfileCurrentUser ViewFollowing={ViewFollowing} ViewFollower={ViewFollower} /> : <ProfileUser ViewFollowing={ViewFollowing} ViewFollower={ViewFollower} data={props.data}/>}
            {/* end profile left  */}
            <div className="is-flex is-flex-column is-flex-gap-sm">

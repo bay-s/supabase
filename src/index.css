@@ -747,6 +747,26 @@ font-size: 11px !important;
 }
 
 /* === RESPONSIVE ===== */
+@media (max-width:635px){
+  .user-info{
+    flex-direction: column !important;
+    gap: 20px !important;
+    align-items: flex-start !important;
+  }
+  .user-bio{
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+  .button-user{
+    display: flex;
+    gap: 10px;
+  }
+
+  .user-bio p{
+    font-size: 13px !important;
+  }
+}
 @media (max-width:516px){
 
   .header-bottom{
@@ -776,6 +796,13 @@ font-size: 11px !important;
     height: 115px !important;
   }
 
+  .user-info{
+    align-items: center!important;
+  }
+  .user-avatar{
+    gap: 1px !important;
+    flex-direction: column !important;
+  }
 }
 
 

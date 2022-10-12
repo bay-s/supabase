@@ -16,7 +16,8 @@ class  EditAvatar extends React.Component{
          isValid:false,
          pesan:'',
          error:false,
-         sukses:false
+         sukses:false,
+         imgName:''
         }
       }
 
@@ -26,15 +27,14 @@ class  EditAvatar extends React.Component{
         console.log(event.target.files);
         if (event.target.files && event.target.files[0]) {
           let img = event.target.files[0];
-          const exten = ['png','jpeg','jpg','gif','bmp'];
+          const randName =  (Math.random() + 1).toString(36).substring(3);
           const imgStr = img.name.split(".")
-
-
           this.setState({
             imgUpload: URL.createObjectURL(img),
             url:img,
             hide:true,
-            isUpload:true
+            isUpload:true,
+            imgName:`${randName}.${imgStr[1]}`
           });
           }
 
@@ -46,7 +46,7 @@ class  EditAvatar extends React.Component{
         this.setState({isUpload:false})
         const { data, error} = await supabase.storage
         .from('images')
-        .upload(`public/avatar/${this.state.url.name}`, this.state.url,{
+        .upload(`public/avatar/${this.state.imgName}`, this.state.url,{
           cacheControl: '604800',
           upsert: false
         })
@@ -70,7 +70,7 @@ class  EditAvatar extends React.Component{
 getURL = async (url) => {
   const { data,error } = supabase.storage
   .from('images')
-  .getPublicUrl(`public/avatar/${this.state.url.name}`)
+  .getPublicUrl(`public/avatar/${this.state.imgName}`)
   if(data){
     const imgUrl= data.publicURL;
     this.updateAvatar(imgUrl) 
