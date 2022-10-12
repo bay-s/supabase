@@ -803,7 +803,31 @@ font-size: 11px !important;
     gap: 1px !important;
     flex-direction: column !important;
   }
+
 }
 
+
+/* MOBILE VIEW */
+@media (max-width:370px){
+  .tabs ul a {
+   font-size: 12px !important; 
+  }
+  .tabs ul .fa{
+    font-size: 12px !important; 
+   }
+
+   .button-user .button{
+    /* height: 0 !important; */
+    padding: 10px !important;
+    font-size: 12px !important;
+   }
+   .user-bio p{
+    font-size: 10px !important;
+  }
+
+  .user-avatar nav p {
+    font-size: 14px !important; 
+  }
+}
 
 /* === END RESPONSIVE ===== */
