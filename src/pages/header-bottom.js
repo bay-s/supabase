@@ -57,7 +57,7 @@ y = x;
   </div>
   <div class="dropdown-menu" id="dropdown-menu4" role="menu">
   <div className="dropdown-content">
-    <Link className="dropdown-item" to={`/profile/${props.user.id}`}>
+    <Link className="dropdown-item" to={`/profile/${props.user == null ? "" : props.user.id}`}>
         Profile
     </Link>
     <Link className="dropdown-item" to='/edit-profile/'>

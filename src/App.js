@@ -13,6 +13,7 @@ import MessageList from "./pages/message-list"
 import HeaderBottom from "./pages/header-bottom"
 import NotFound from "./pages/404not"
 import ResetPassword from "./pages/reset-password"
+import NewPassword from "./pages/reset-new-password"
 
 
 export const AppContext = createContext()
@@ -48,6 +49,7 @@ function App() {
       setIsLogin(true)
       setUsers(user)
       console.log("user logged in");
+      console.log(user);
     }else{
       setIsLogin(false)
       console.log("not login");
@@ -97,11 +99,12 @@ function App() {
         <Route path="/register/" element={<RegisterPages />} />
         <Route path="/login/" element={<LoginPage isLogin={isLogin} />} />
         <Route path='/reset-password/' element={<ResetPassword /> } />
+        <Route path='/new-password/' element={<NewPassword />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
 
 <div className={!open ? 'modal' : 'modal is-active'}>
-<ModalPosts id={users.id} dataUser={data}/>
+<ModalPosts user={users} dataUser={data}/>
 <button class="modal-close is-large" aria-label="close" onClick={openModal }></button>
 </div>
     </BrowserRouter>

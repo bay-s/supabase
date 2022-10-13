@@ -10,7 +10,7 @@ function  ResetPassword(props){
    const [error,setError] = useState(false)
    const [isSubmit,setIsSubmit] = useState(false)
    const [sukses,setSukses] = useState(false)
-   const [isExist,setIsExist] = useState(false)
+   const [isExist,setIsExist] = useState(null)
 
   const banner =  {
     backgroundImage:`url(${banners})`,
@@ -20,7 +20,6 @@ function  ResetPassword(props){
 const HandlerChange = (e) => {
     const {value,name} = e.target
     setEmail(value)
-
   }
 
   const fetchData = async () => {
@@ -31,11 +30,13 @@ const HandlerChange = (e) => {
     .single()
     if(error){
       console.log(error);
+      setError(true)
       setIsSubmit(false)
+      setPesan('Account not found')
       setIsExist(false)
     }
     if(data){
-     setIsSubmit(false)
+      console.log(data);
      setIsExist(true)
     }
   }
@@ -50,35 +51,39 @@ if(!email){
   setIsSubmit(false)
   return
 }
+console.log(isExist);
 fetchData()
- if(isExist){
+ if(isExist !== null){
     SendLink()
+    setIsSubmit(false)
  }else{
-    setError(true)
-    setPesan('Account not found')
+alert(null)
+setIsSubmit(false)
  }
   }
 
 const SendLink = async () => {
  const { data, err } =  await supabase.auth.api.resetPasswordForEmail(email, {
-    redirectTo: 'https://example.com/update-password',
+    // redirectTo: 'http://localhost:3000/new-password/',
   })
 if(data) {
-    setError(false)
     setIsSubmit(false)
+    console.log(data);
+    setError(false)
     setSukses(true)
     setPesan('We succesfully sent link to your email')
-    console.log(data);
 }
 if(err) {
     console.log(err.mssage);
     setIsSubmit(false)
+    setError(true)
+    setPesan(err.mssage)
 }
 }
 
   return(
 
-<div className='container mt-5 pt-4'>
+<div className='container mt-5 pt-4 mx-5'>
             <div className='columns is-centered '>
 <div className='column is-6 box p-0 '>
 <div className='banner' style={banner}></div>

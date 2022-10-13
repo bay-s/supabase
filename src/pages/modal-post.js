@@ -132,7 +132,7 @@ if (event.target.files && event.target.files[0]) {
 
 
 InsertPost = async (imgUrl) => {
-  const id = this.props.id
+  const id = this.props.user.id
   const [data,error] = await supabase
   .from('post')
   .insert([
