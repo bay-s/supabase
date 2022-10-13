@@ -55,7 +55,7 @@ console.log(isExist);
 fetchData()
  if(isExist !== null){
     SendLink()
-    setIsSubmit(false)
+
  }else{
 alert(null)
 setIsSubmit(false)
