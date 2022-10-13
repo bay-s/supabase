@@ -40,10 +40,11 @@
     ]
   },
   "devDependencies": {
+    "aria-query": "^4.2.2",
     "eslint": "^8.24.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jsx-a11y": "^6.5.1",
-    "aria-query": "^4.2.2"
+    "netlify-cli": "^12.0.8"
   }
 }

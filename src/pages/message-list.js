@@ -8,7 +8,9 @@ import MessageChatLeft from './message-chat-left'
 import MessageChatRight from './message-chat-right'
 import MessageReplyInput from './message-reply-input'
 
+
 class MessageList extends React.Component{
+
 constructor(){
   super()
   this.state = {
@@ -21,19 +23,27 @@ constructor(){
   }
 }
 
-async componentDidMount(){
-await this.fetchMessage()
+componentDidMount(){
+this.fetchMessage()
 }
+componentDidUpdate(){
+  if(this.props.data.uid){
+    // this.fetchMessage()
+  }else{
+    console.log('null');
+  }
+  }
 
  fetchMessage = async e => {
+  const id = this.props.data.uid ? this.props.data.uid : null
   const {data,err} = await supabase.from('message')
   .select()
-  .eq('owner_id',this.props.data.uid)
+  .eq('owner_id',id)
   if(data){
     this.setState({message:data})
     // console.log(data);
     const test = []
-
+console.log(data);
     data.forEach(m => {
       const id = m.sender_id
       test.push(id)
@@ -99,7 +109,7 @@ await this.fetchMessageReply(id)
 
   const height = {height:`${450}px`}
     return(
-   <div className='container my-5 pt-2'>
+   <div className='container my-5 pt-2 mx-5'>
           <div className='column is-8 is-centered mx-auto p-0 my-5 pt-2'>
         <div className='container'>
           <div className='columns is-multiline h-100'>
@@ -136,11 +146,11 @@ await this.fetchMessageReply(id)
   <div className='p-3 is-flex is-flex-column is-flex-gap-lg chat-box' style={height}>
     {/* <MessageChatLeft />    */}
   {this.state.MessageId.length < 1 ? "" : this.state.MessageDetail.map(msg => {
-return <MessageChatRight msg={msg} />
+return <MessageChatRight  msg={msg} />
   })
   }
   {this.state.MessageId.length < 1 ? "" : this.state.reply.map(msg => {
-return <MessageChatLeft msg={msg} />
+return <MessageChatLeft  msg={msg} />
   })
   }
     </div>

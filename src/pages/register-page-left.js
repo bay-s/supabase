@@ -12,7 +12,7 @@ function RegisterPageLeft(props){
     return(
         <>
  <div className='banner' style={banner}></div>
-  <div className='is-flex is-flex-column is-flex-gap-lg p-3 px-3 text-center h-100'>
+  <div className='is-flex is-flex-column is-flex-gap-lg p-3 px-3 text-center'>
                <h3 className='title main-title  is-1 is-bold text-center mx-auto'>
                Ask It
                </h3>

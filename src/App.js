@@ -11,6 +11,8 @@ import EditProfile from "./pages/edit-profile"
 import Message from "./pages/message"
 import MessageList from "./pages/message-list"
 import HeaderBottom from "./pages/header-bottom"
+import NotFound from "./pages/404not"
+import ResetPassword from "./pages/reset-password"
 
 
 export const AppContext = createContext()
@@ -94,6 +96,8 @@ function App() {
         <Route path="/message/:id" element={isLogin ? <Message user={data}/> : <LoginPage isLogin={isLogin} />} />
         <Route path="/register/" element={<RegisterPages />} />
         <Route path="/login/" element={<LoginPage isLogin={isLogin} />} />
+        <Route path='/reset-password/' element={<ResetPassword /> } />
+        <Route path='*' element={<NotFound />} />
       </Routes>
 
 <div className={!open ? 'modal' : 'modal is-active'}>

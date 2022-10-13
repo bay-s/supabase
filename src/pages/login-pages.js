@@ -45,6 +45,7 @@ handlerChange = (e) => {
       error:false,
       isSubmit:true
     })
+    
     const email =  this.state.email
     const password = this.state.password
         const { user, session, error } = await supabase.auth.signIn({
@@ -85,17 +86,19 @@ render(){
     height:`${200}px`
   }
   
-
   return(
 this.props.isLogin ? <Navigate to="/" replace={true} /> :
-<div className='container mt-5'>
+<div className='container mt-5 pt-4'>
             <div className='columns is-centered '>
 <div className='column is-6 box p-0 '>
 <div className='banner' style={banner}></div>
 <LoginForm isSubmit={this.state.isSubmit} userLogin={this.userLogin} handlerChange={this.handlerChange}  sukses={this.state.sukses} error={this.state.error} pesan={this.state.pesan} />
-<div class="field is-flex is-flex-gap-md is-justify-content-center py-4">
-   <p className='is-title'>Don`t have an Account ?</p>
-   <Link to='/register/' className='has-text-primary  is-title'>Sign Up</Link>
+<div class="field is-flex justify-between p-3">
+   <div className='is-flex is-flex-gap-md'>
+   <p className='is-title is-size-7'>Don`t have an Account ?</p>
+   <Link to='/register/' className='has-text-primary  is-title is-size-7'>Sign Up</Link>
+   </div>
+   <Link to='/reset-password/' className='has-text-primary  is-title is-size-7'>Forgout your password ?</Link>
  </div>
 </div>
       </div>

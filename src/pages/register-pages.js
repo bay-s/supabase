@@ -116,7 +116,7 @@ class RegisterPages extends React.Component{
      render(){
 
       return(
-<section className='container mt-5'>
+<section className='container mt-5 pt-3'>
 <div className='columns is-centered is-multiline is-gapless'>
 {/* start col left */}
 <div className='column is-5 p-0 box'>
