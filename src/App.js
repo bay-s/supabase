@@ -50,6 +50,7 @@ function App() {
       setUsers(user)
       console.log("user logged in");
       console.log(user);
+      console.log(users);
     }else{
       setIsLogin(false)
       console.log("not login");

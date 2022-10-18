@@ -16,7 +16,7 @@ const  Header = (props) => {
    const [loader,setLoader] = useState(true)
    useEffect(() => {
       document.addEventListener('click',function(e){
-        if(!e.target.classList.contains('input')){
+        if(!e.target.classList.contains('open-search')){
           console.log("Test");
           setHide(false)
         }else{
@@ -82,7 +82,7 @@ return(
 <div className={props.isLogin ? 'mx-auto search is-hidden-mobile' : 'hide' }>
   <form className={hide ? 'is-flex mt-4 dropdown is-active z-index' : 'is-flex mt-4 dropdown'} onSubmit={SearchUser}>
   <div className="control has-icons-left has-icons-right">
-    <input className="input " type="text" placeholder="Search user" autoComplete="off" name='search' onChange={HandlerChange }/>
+    <input className="input open-search" type="text" placeholder="Search user" autoComplete="off" name='search' onChange={HandlerChange }/>
     <span className="icon is-small is-right">
       {!hide ?  <i className="fa fa-search is-clickable"></i> :
       <i className="fa fa-times is-clickable" aria-hidden="true" ></i>
