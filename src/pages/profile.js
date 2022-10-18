@@ -7,6 +7,7 @@ import Banner from './banner'
 import BannerUser from './banner-user'
 
 
+
 const Profile = (props) => {
 const {id} = useParams()
 const [err,setErr] = useState(false)

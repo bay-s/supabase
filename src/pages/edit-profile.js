@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams} from 'react-router-dom'
 import akun from '../akun.jpg'
 import supabase from '../supabase-config';
-import UploadAvatar from './edit-avatar.js';
+import ChangePassword from './change-password';
+import EditProfileForm from './edit-profile-form';
 
 // function EditProfile(props){
 //   const {id} = useParams()
@@ -34,7 +35,8 @@ class EditProfile extends React.Component{
      website:'',
      biodata:'',
      imgUpload:'',
-     url:''
+     url:'',
+     tab:'edit'
     }
   }
   
@@ -100,86 +102,52 @@ class EditProfile extends React.Component{
   }
 
 
+  openTab = (e) => {
+    e.preventDefault()
+    const tabs = e.target.textContent.toLowerCase()
+    const text = tabs.split(" ")
+    this.setState({tab:text[0]})
+  }
   render(){
 
+    const data = {
+      UpdateProfile:this.UpdateProfile,
+      handlerChange:this.handlerChange,
+      error:this.state.error,
+      sukses:this.state.sukses,
+      isSubmit:this.state.isSubmit,
+      pesan:this.state.pesan
+    }
     return(
-    <div className="container my-5" >
-  <div className='columns is-multiline  mx-6 is-centered'>
-        <div className='column is-two-thirds box '>
-<div className='p-3'>
-<UploadAvatar id={this.props.data.uid} data={this.props.data}/>
-{/* END UPLOAD INPUT */}
-<form className='is-flex is-flex-direction-column is-flex-gap-lg' onSubmit={this.UpdateProfile}>
-<div class="field">
-<label class="label">Fullname</label>
-<div class="control">
-<input class="input  is-link has-text-dark" type="text" name='fullname' placeholder={this.props.data.fullname} defaultValue={this.props.data.fullname} onChange={this.handlerChange}/>
-</div>
-</div>
-
-<div class="field">
-<label class="label">Username</label>
-<div class="control">
-<input class="input  is-link" type="text" name='username' placeholder={this.props.data.username}  defaultValue={this.props.data.username}  onChange={this.handlerChange}/>
-</div>
-</div>
-
-<div class="field">
-<label class="label">Website Link</label>
-<div class="control">
-<input class="input  is-link" type="text" name='link' placeholder={this.props.data.link} defaultValue={this.props.data.link} onChange={this.handlerChange}/>
-</div>
-</div>
-
-
-<div class="field ">
-<label class="label">Phone</label>
-  <div class="field-body">
-    <div class="field is-expanded">
-      <div class="field has-addons">
-        <p class="control">
-          <a class="button is-static ">
-            +62
-          </a>
-        </p>
-        <p class="control is-expanded">
-          <input class="input is-link" type="tel" name='phone' placeholder={this.props.data.phone} defaultValue={this.props.data.phone} onChange={this.handlerChange}/>
-        </p>
+ <div className="container mt-5 pt-5" >
+  <div className='columns is-multiline  mx-6 is-centered h-100 is-gapless'>
+     <div className='column is-one-fifth p-0 box '>
+      <ul className='is-flex is-flex-column text-center p-2 tabs'>
+      <li className={this.state.tab === 'edit' ? 'text-center is-active' : 'text-center'}>
+      <a class="navbar-item text-center" data-tab='edit' onClick={this.openTab }>
+        Edit Profile
+      </a>
+    </li>
+    <li className={this.state.tab === 'change' ? 'text-center is-active' : 'text-center'}>
+      <a class="navbar-item " data-tab='change' onClick={this.openTab }>
+       Change Password
+      </a>
+      </li>
+      </ul>
+     </div>
+     <div className='column is-two-thirds box '>
+{this.state.tab === 'edit' ? <EditProfileForm data={data}/> : <ChangePassword  id={this.props.data.uid}/>}
       </div>
-      <p class="help">Do not enter the first zero</p>
+        {/* END COLUMN RIGHT */}
     </div>
-  </div>
+    {/* END COLUMNS */}
 </div>
-
-<div class="field">
-<label class="label">Bio</label>
-<textarea class="textarea is-link is-small" name='biodata' placeholder={this.props.data.biodata} defaultValue={this.props.data.biodata} onChange={this.handlerChange}></textarea>
-</div>
-
-
-<article class={this.state.error ? "message is-danger" : 'hide'}>
-  <div class="message-body">
- <i> {this.state.pesan}</i>
-  </div>
-</article>
-<article class={this.state.sukses ? "message is-success" : 'hide'}>
-  <div class="message-body">
- <i> {this.state.pesan}</i>
-  </div>
-</article>
-
-<div class="field">
-{this.state.isSubmit ?  <button class="button is-link" title="Disabled button">Submit</button> : <button class="button is-link" title="Disabled button" disabled>Submit</button>}
-</div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
+// END CONTAINER
     )
   }
 }
 
 
 export default EditProfile;
+
+
