@@ -146,6 +146,11 @@ table {
   -ms-animation: fadeIn 1s   !important;
 }
 
+.post-image{
+  object-fit: cover !important;
+  height: 100%;
+}
+
 .dropdown-content:hover .avatars{
   background-color: rgba(128, 128, 128, 0.301);
   transition: 250ms;

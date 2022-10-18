@@ -63,7 +63,7 @@ const ModalPostRight = (props) => {
          })
          
     return(
-<div className='column is-4 has-background-white p-0 is-flex is-flex-column'>
+<div className='column is-4 has-background-white p-0 is-flex is-flex-column h-100'>
 <header class="modal-card-head p-0 p-3 justify-between">
 <Avatar id={props.post.author_uid} />
 {props.user.uid === props.post.author_uid ? <i class="fa fa-trash-o has-text-danger is-bold is-clickable"  data-id={props.post.id} aria-hidden="true" onClick={DeletePost}></i> : 

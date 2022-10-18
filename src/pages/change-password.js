@@ -97,9 +97,9 @@ console.log(users);
   </p>
 </div>
 
-<div className='is-flex is-flex-column'>
-   {isSubmit ?  <button className='button is-info w-25' >Change Password</button> 
-   :  <button className='button is-info w-25' disabled>Change Password</button>}
+<div className='field is-flex is-flex-column'>
+   {isSubmit ?  <button className='button is-info ' >Change Password</button> 
+   :  <button className='button is-info ' disabled>Change Password</button>}
     <Link to='/reset-password/' className='is-size-7 text-info p-2'>Forgot password?</Link>
 </div>
 

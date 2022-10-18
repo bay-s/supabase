@@ -198,7 +198,7 @@ class ButtonFollow extends React.Component{
 
       const buttonFollow =
       this.state.isFollow ? 
-      <button class="button is-link is-radius is-title is-size-7 is-small hvr-curl-top-left following" data-id={this.state.follower_id} data-following={this.state.following_id} data-follow={this.props.id}
+      <button class="button is-info is-radius is-title is-size-7 is-small hvr-curl-top-left following" data-id={this.state.follower_id} data-following={this.state.following_id} data-follow={this.props.id}
       onClick={this.AddFollow}>Following</button>   
       :       <button class="button is-link is-radius  is-title is-size-7 is-small hvr-curl-top-left" data-following={this.state.following_id}  data-id={this.state.follower_id} data-follow={this.props.id}
       onClick={this.AddFollow}>Follow</button>
