@@ -50,9 +50,11 @@ post.length < 1 ? <NoPost /> : post.map(item => {
   <div className="card post-card is-relative">
     <div class="card-image">
       <figure className="image is-4by3">
+      <Link to={`/post/${item.id}`}>
         <img className='is-clickable'
          src={item.post_image ==='' ? "https://bulma.io/images/placeholders/1280x960.png" : item.post_image }
         />
+        </Link>
       </figure>
     </div>
    <div className='captions is-flex align-center is-flex-gap-md'>
