@@ -23,7 +23,7 @@ const SinglePost = (props) => {
         }if(err) console.log(`Something wrong ${err.message}`);
       }
       getSinglePost();
-    },[])
+    },[posts])
 
     
 
@@ -52,11 +52,11 @@ const SinglePost = (props) => {
    
     return(
 <div className='container my-5 pt-3'>
-<div className='column is-8 mx-auto is-centered mb-5'>
+<div className='column is-8 mx-auto is-centered mb-5' >
 <div className='columns is-multiline box p-0 h-500px'>
 {/* START POST LEFT */}
-<div className='column is-8  p-0 h-100'>
-<img src={posts.post_image} className='w-100 h-100 post-image'/>
+<div className='column is-8  p-0 h-100' >
+<img src={posts.post_image} className='w-100 h-100 post-image' />
 </div>
 {/* END POST LEFT */}
 {/* START POST RIGHT */}
@@ -68,7 +68,7 @@ const SinglePost = (props) => {
 <div className='column is-12'>
   <hr className='navbar-divider'/>
 </div>
-<PostCardUser id={posts.author_uid} key={posts.id}/>
+<PostCardUser id={posts.author_uid} key={posts.id} />
 </div>
   </div>
 </div>
