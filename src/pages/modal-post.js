@@ -223,8 +223,8 @@ render(){
     }
 
     return(
-        <>
- <div class="modal-background"></div>
+        <div className='container my-5'>
+
 <form onSubmit={this.uploadImage} className='m-5 modal-posts'>
           <div class="modal-card h-500px mx-auto">
 <header class="modal-card-head">
@@ -241,7 +241,8 @@ render(){
 <ModalPostImage data={data} />
 </div>
           </form>
-        </>
+
+        </div>
             )
 }
 

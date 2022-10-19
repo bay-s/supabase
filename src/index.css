@@ -265,8 +265,8 @@ body {
 
 }
 .image-container img{
-  height: 100%;
-  object-fit: cover;
+  height: 100% !important;
+  object-fit: cover !important;
 }
 
 .avatar img{

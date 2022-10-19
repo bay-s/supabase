@@ -106,10 +106,13 @@ function App() {
         <Route path='*' element={<NotFound />} />
       </Routes>
 
-<div className={!open ? 'modal' : 'modal is-active'}>
+<div className={!open ? 'modal' : 'modal is-active modal-post'}>
+<div class="modal-background"></div>
 <ModalPosts user={users} dataUser={data}/>
 <button class="modal-close is-large" aria-label="close" onClick={openModal }></button>
 </div>
+
+
     </BrowserRouter>
    </AppContext.Provider>
   );

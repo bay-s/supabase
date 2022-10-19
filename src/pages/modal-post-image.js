@@ -5,8 +5,13 @@ import { AppContext } from '../App'
 function ModalPostImage(props){
      const {value} = useContext(AppContext)
     return(
-<section className={props.data.imgUpload !== '' ? "modal-image is-flex is-mobile p-0 m-0 h-100" : "hide"}>
-<div className='column is-8 p-0 m-0 image-container'> <img src={props.data.imgUpload} alt="test" /></div>
+<section className={props.data.imgUpload !== '' ? "is-flex h-700px " : "hide"}>
+{/* START COLUMN LEFT */}
+<div className='column is-8 p-0 m-0 image-container'> 
+<img src={props.data.imgUpload} alt="test" />
+</div>
+{/* END COLUMN LEFT */}
+{/* START COLUMN RIGHT */}
  <div className='column  p-3 has-background-white caption'>
   <div className='is-flex is-align-items-center is-flex-gap-lg'>
 <figure class="image is-32x32">
@@ -35,6 +40,7 @@ function ModalPostImage(props){
           </div>
 </article>
  </div>
+ {/* END COLUMN RIGHT */}
 </section>
     )
 }

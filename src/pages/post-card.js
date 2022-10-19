@@ -55,10 +55,10 @@ const openModalPost = e => {
 {/* end header  */}
         <div class="card-image">
           <figure className="image is-4by3">
-          <Link to={`/post/${props.data.id}`}>
+          <Link to={`/post/${props.data.id}`} >
           <img
              src={props.data.post_image == null || '' ? "https://bulma.io/images/placeholders/1280x960.png" : props.data.post_image }
-             className='is-clickable is-hidden-mobile'  />
+             className='is-clickable is-hidden-mobile' />
           </Link>
              {/* onClick={openModalPost} */}
           <img
@@ -75,7 +75,7 @@ const openModalPost = e => {
             <span className='is-size-7 is-title'>{props.data.post_content}</span>
             <span className='is-size-7 is-title'>{props.data.total_likes} Likes</span>
             <a href="#" className='is-size-7 '>#{props.data.post_cat}</a>
-            <a href="#" className={props.data.total_comment < 1 ? 'hide' : 'is-size-7 has-text-grey'}>View {props.data.total_comment} comment</a>
+            <a href="#" className={props.data.total_comment < 1 ? 'hide' : 'is-size-7 has-text-grey'} onClick={openModalPost}  >View {props.data.total_comment} comment</a>
             <time datetime={props.data.created_at} className="is-title is-bold text-small">{ timeDifference(props.data.created_at)}</time>
           </div>
         </div>
