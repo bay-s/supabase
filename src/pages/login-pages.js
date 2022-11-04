@@ -48,7 +48,7 @@ handlerChange = (e) => {
     
     const email =  this.state.email
     const password = this.state.password
-        const { user, session, error } = await supabase.auth.signIn({
+    const { data, error } = await supabase.auth.signInWithPassword({
         email:email,
         password:password,
       })
@@ -62,17 +62,17 @@ handlerChange = (e) => {
           sukses:false
         })
       }
-      if(session){
-        console.log(session);
-      }
-      if(user){
-        console.log(user);
-        this.setState({
-          error:false,
-          isSubmit:false,
-          sukses:true,
-          pesan:"Login Sukses"
-        })
+      if(data){
+        console.log(data);
+        if(data.user == null){}
+        else {
+          this.setState({
+            error:false,
+            isSubmit:false,
+            sukses:true,
+            pesan:"Login Sukses"
+          })
+        }
         window.location.href = "/";
       }
 

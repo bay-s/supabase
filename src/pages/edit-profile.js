@@ -119,7 +119,7 @@ class EditProfile extends React.Component{
       pesan:this.state.pesan
     }
     return(
- <div className="container mt-5 pt-5" >
+ <div className="container mt-5 pt-5 bg-dark" >
   <div className='columns is-multiline  mx-6 is-centered h-100 is-gapless'>
      <div className='column is-one-fifth p-0 box '>
       <ul className='is-flex is-flex-column text-center p-2 tabs'>

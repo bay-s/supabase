@@ -9,15 +9,17 @@ const HomeSidebar = (props) => {
 
     return(
 // START CARD CONTAINER
-<div class="is-flex is-flex-column is-flex-gap-lg sidebar">
+<aside className='home-sidebar'>
+<div class="is-flex is-flex-column is-flex-gap-lg">
 <HomeProfile data={props.data} />
 {/* END PROFILE CARD */}
 {/* START RECENT POST CARD */}
-<HomeSidebarPost />
+{/* <HomeSidebarPost /> */}
 {/* END RECENT POST CARD */}
-<HomeSidebarPopular />
+{/* <HomeSidebarPopular /> */}
 {/* END CARD 2 */}
-              </div>
+</div>
+</aside>
 // END CARD CONTAINER 
     )
 }

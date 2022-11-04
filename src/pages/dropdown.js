@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from  'react'
+import React, { useContext, useEffect, useState } from  'react'
 import { Link } from 'react-router-dom'
+import { AppContext } from '../App'
 
 function DropDown(props){
     const [open,setOpen] = useState(false)
-
+    const {value} = useContext(AppContext)
     const openMenu = (e) => {
       e.preventDefault()
     console.log(e.target.classList);
@@ -22,7 +23,7 @@ function DropDown(props){
   </div>
   <div className="dropdown-menu" id="dropdown-menu" role="menu">
     <div className="dropdown-content">
-    <Link className="dropdown-item" to={`/profile/${props.user == null ? "" : props.user.id}`}>
+    <Link className="dropdown-item" to={`/profile/${value.data.uid}`}>
         Profile
     </Link>
     <Link className="dropdown-item" to='/edit-profile/'>

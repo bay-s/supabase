@@ -350,7 +350,10 @@ border: none !important;
   margin: 50px 0;
 }
 
-
+.home-sidebar{
+  position: sticky !important;
+  top: 100px !important;
+}
 
 .border{
   border: 2px solid red;
@@ -444,6 +447,9 @@ text-align: left !important;
 }
 .likes{
   color: rgb(255, 40, 40) !important;
+}
+.marked{
+  color: black !important;
 }
 .lh-sm {
   line-height: 1.25rem;

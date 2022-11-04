@@ -8,6 +8,7 @@ import LoaderCard from './loader'
 import ModalPostDetail from './modal-post-detail'
 import timeDifference from './timestamp'
 import Avatar from './avatar'
+import Bookmarked from './bookmark'
 
 
 function PostCard(props){
@@ -43,6 +44,8 @@ const openModalPost = e => {
   console.log("Tes");
 
 }
+
+
     return(
       loader ? <LoaderCard /> :
 <>      
@@ -69,7 +72,7 @@ const openModalPost = e => {
         <div className="card-content p-2">
           <div className="is-flex align-center justify-between px-2 py-2">
           <LikesCard post={props.data} user={props.user}/>
-          <i class="fa fa-bookmark-o is-size-5 is-clickable"></i>
+          <Bookmarked post={props.data} user={props.user}/>
           </div>
           <div className="content p-0 p-2 is-flex is-flex-column">
             <span className='is-size-7 is-title'>{props.data.post_content}</span>
@@ -79,7 +82,7 @@ const openModalPost = e => {
             <time datetime={props.data.created_at} className="is-title is-bold text-small">{ timeDifference(props.data.created_at)}</time>
           </div>
         </div>
-        <CommentInput post={props.data}/>
+        {/* <CommentInput post={props.data}/> */}
  {/* END CARD CONTENT */}
       </div>
   </div>   

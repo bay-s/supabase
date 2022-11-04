@@ -10,7 +10,7 @@ const Home = (props) => {
 const [err,setErr] = useState(null)
 const [data,setData] = useState([])
 const [message,setMessage] = useState('')
-
+const [isMark,setIsMark] = useState([])
 useEffect(() => {
 const fetchData = async () => {
   const {data,error} = await supabase
@@ -29,6 +29,7 @@ const fetchData = async () => {
   }
 }
 fetchData()
+getBookMark()
 },[])
 
 const deletePost = async (e) => {
@@ -52,8 +53,19 @@ const deletePost = async (e) => {
   }
 }
 
-const postCard = data.length < 1 ? "" : data.map(item => {
- return <PostCard data={item} user={props.data}/>
+const getBookMark = async () => {
+  const { data, error } = await supabase
+  .from('bookmark')
+  .select()
+  if(error) console.log(error);
+  else {
+      setIsMark(data)
+  }
+ }
+
+
+const postCard = data.length < 1 ? "" : data.map((item ,index)=> {
+  return <PostCard data={item} leng={data.length} user={props.data} index={index}/>
 })
   return (
 <div class="container mx-auto my-5 pt-3">

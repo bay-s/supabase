@@ -26,7 +26,7 @@ function App() {
   const [data,setData] = useState([])
 
   useEffect(() => {
-    const user = supabase.auth.user();
+    const user = getUsers();
     supabase.auth.onAuthStateChange((event, session) => {
       if (event == 'SIGNED_IN') {
         // console.log('SIGNED_IN', session)
@@ -57,13 +57,28 @@ function App() {
       console.log("not login");
     }
 
-  const check =  user? fetchData(user.id) : console.log("kosong");
+  const check =  user ? fetchData(user.id) : console.log("kosong");
   },[])
 
   const openModal = e => {
     e.preventDefault()
     setOpen(!open)
   }
+
+  
+const getUsers = async () => {
+  const { data: { user } } = await supabase.auth.getUser()
+  if(user){
+    console.log("user logged in");
+    console.log(user);
+    setUsers(user)
+  }else{
+    console.log("not login");
+    setIsLogin(false)
+  }
+  console.log(user);
+  const check =  user ? fetchData(user.id) :  setIsLogin(false)
+}
 
   const fetchData = async (id) => {
     const {data,error} = await supabase
@@ -80,13 +95,17 @@ function App() {
     }
   }
 
+
+
+
+
   const value = {
     data,
     users,
     openModal,
     isLogin
   }
-
+console.log(data);
   return (
    <AppContext.Provider value={{value}}>
         <BrowserRouter>
