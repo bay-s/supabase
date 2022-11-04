@@ -10,7 +10,6 @@ import timeDifference from './timestamp'
 import Avatar from './avatar'
 import Bookmarked from './bookmark'
 
-
 function PostCard(props){
 
   const [UserData,setUserData] = useState([])

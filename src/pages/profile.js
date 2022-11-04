@@ -5,16 +5,18 @@ import ProfileInfo from './profile-user-info'
 import PostCardUser from './post-card-user'
 import Banner from './banner'
 import BannerUser from './banner-user'
-
+import PostCardSaved from './post-card-saved'
 
 
 const Profile = (props) => {
 const {id} = useParams()
-const [err,setErr] = useState(false)
+const [tab,setTab] = useState('pictures')
 const [data,setData] = useState([])
-
+const [booMark,setBookMark] = useState([])
 useEffect(() => {
+
 fetchData()
+fetchBookmark()
 },[])
 
 const fetchData = async () => {
@@ -32,10 +34,25 @@ const fetchData = async () => {
   }
 }
 
-      // const postCard = post.length < 1  ? "" : post.map(item => {
-      //   return <PostCardUser key={post} data={item} />
-      //  })
-
+const fetchBookmark = async () => {
+  const {data,error} = await supabase
+  .from('bookmark')
+  .select()
+  .eq('mark_id',id)
+  if(error) console.log(error);
+  else {
+    setBookMark(data)
+  }
+}
+      const postCardSave = booMark == undefined ? "" : booMark.map(item => {
+        console.log(item);
+        return <PostCardSaved data={item} />
+       })
+const openTab = (e) => {
+  const tabs = e.target.textContent.toLowerCase()
+  const text = tabs.split(" ")
+ setTab(text[0])
+}
     return(
 <div className='container m-4 mx-auto pt-4' >
 <div class="column is-10 box is-centered p-0 mx-auto">
@@ -46,24 +63,33 @@ const fetchData = async () => {
     {/* tabs*/}
 <div className="tabs is-centered mx-5">
           <ul className="is-flex align-center justify-center">
-            <li className="is-active hvr-underline-from-left is-flex align-center">
-               <i className="fa fa-picture-o" aria-hidden="true"></i>
-               <a href="#" >Pictures</a>
-            </li>
-            <li className="hvr-underline-from-left  is-flex align-center">
-            <i className="fa fa-video-camera" aria-hidden="true"></i>
-            <a href="#">Videos</a>
-             </li>
-             <li className="hvr-underline-from-left  is-flex align-center">
-             <i class="fa fa-bookmark-o" aria-hidden="true"></i>
-              <a href="#" >Saved</a>
-             </li>
+    <li className={tab === 'pictures' ? 'text-center is-active' : 'text-center'}>
+      <a class="navbar-item " data-tab='change' onClick={openTab }>
+       Pictures
+      </a>
+    </li>
+    <li className={tab === 'videos' ? 'text-center is-active' : 'text-center'}>
+      <a class="navbar-item " data-tab='change' onClick={openTab }>
+       Videos
+      </a>
+      </li>
+      <li className={tab === 'saved' ? 'text-center is-active' : 'text-center'}>
+      <a class="navbar-item " data-tab='change' onClick={openTab }>
+       Saved
+      </a>
+      </li>
           </ul>
 </div>
 {/* END TABS */}
 {/* POST CONTAINER */}
-<div className='columns is-multiline my-2 p-0 px-5 profile-post'>
+<div className={tab === 'pictures' ? 'columns is-multiline my-2 p-0 px-5 profile-post fade' : 'hide'}>
 <PostCardUser id={id} />
+</div>
+<div className={tab === 'videos' ? 'columns is-multiline my-2 p-0 px-5 profile-post fade' : 'hide'}>
+videos
+</div>
+<div className={tab === 'saved' ? 'columns is-multiline my-2 p-0 px-5 profile-post fade' : 'hide'}>
+{postCardSave}
 </div>
 {/* END POST CONTAINER */}
        </div>
