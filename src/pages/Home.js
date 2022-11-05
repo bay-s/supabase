@@ -65,7 +65,7 @@ const getBookMark = async () => {
 
 
 const postCard = data.length < 1 ? "" : data.map((item ,index)=> {
-  return <PostCard data={item} leng={data.length} user={props.data} index={index}/>
+  return <PostCard data={item} leng={data.length}  index={index}/>
 })
   return (
 <div class="container mx-auto my-5 pt-3">

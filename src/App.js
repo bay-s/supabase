@@ -112,9 +112,9 @@ console.log(data);
       <Header isLogin={isLogin} user={users} openModal={openModal}/>
       <HeaderBottom isLogin={isLogin} user={users} openModal={openModal}/>
       <Routes>
-        <Route path="/" element={isLogin ? <Home isLogin={isLogin} data={data}/> : <LoginPage isLogin={isLogin} />} />
+        <Route path="/" element={isLogin ? <Home isLogin={isLogin} /> : <LoginPage isLogin={isLogin} />} />
         <Route path="/message-list/" element={isLogin ? <MessageList data={data}/> : <LoginPage isLogin={isLogin} />} />
-        <Route path="/profile/:id" element={isLogin ? <Profile user={data} /> : <LoginPage isLogin={isLogin} />} />
+        <Route path="/profile/:id" element={isLogin ? <Profile  /> : <LoginPage isLogin={isLogin} />} />
         <Route path="/edit-profile/" element={isLogin ? <EditProfile data={data}/> : <LoginPage isLogin={isLogin} />} />
         <Route path="/message/:id" element={isLogin ? <Message user={data}/> : <LoginPage isLogin={isLogin} />} />
         <Route path="/register/" element={<RegisterPages />} />

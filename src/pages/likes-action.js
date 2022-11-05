@@ -8,13 +8,12 @@ super(props)
 this.state = {
     likes_id:[],
     isLikes:false,
+    likesToggle:false
 }
 }
-
 
 componentDidMount(){
 this.getIdLikes()
-console.log(this.state.likes_id);
 }
 
   
@@ -48,7 +47,7 @@ addLikes = async (e) => {
     e.preventDefault()
     const id = this.props.post.id
     const lid = parseInt(e.target.dataset.likes) 
-    
+    this.setState({likesToggle:!this.state.likesToggle})
     if(parseFloat(e.target.dataset.id) === id){
       if(e.target.classList.contains('likes')){
         console.log("ada like");
@@ -114,9 +113,8 @@ if(data){
 }
 render(){
 
-    const is_likes = this.state.isLikes ? <i className="fa fa-heart is-size-5 is-clickable likes"  data-likes={this.state.likes_id} data-id={this.props.post.id} onClick={this.addLikes}></i>
-    : <i className="fa fa-heart-o  is-size-5 is-clickable" data-likes={this.state.likes_id} data-id={this.props.post.id} onClick={this.addLikes}></i>
-    
+    const is_likes = this.state.isLikes ? <i className="fa fa-heart is-size-5 is-clickable likes"  data-likes={this.state.likes_id} data-id={this.props.post.id} onClick={this.addLikes}></i> 
+    :   <i className="fa fa-heart-o  is-size-5 is-clickable" data-likes={this.state.likes_id} data-id={this.props.post.id} onClick={this.addLikes}></i>
     return(
 <ul className='is-flex align-center is-flex-gap-md'>
 <li>{is_likes}</li>

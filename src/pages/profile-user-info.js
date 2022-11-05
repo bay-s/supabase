@@ -49,7 +49,7 @@ const ProfileInfo = (props) => {
       {props.id === value.data.uid ? <ProfileCurrentUser ViewFollowing={ViewFollowing} ViewFollower={ViewFollower} /> : <ProfileUser ViewFollowing={ViewFollowing} ViewFollower={ViewFollower} data={props.data}/>}
            {/* end profile left  */}
            <div className="is-flex is-flex-column is-flex-gap-sm">
-           {props.id === value.data.uid ? <ButtonUserLogin /> : <ButtonUser id={props.id} user_login_id={props.user.uid} user={props.user} data={props.data}/>}
+           {props.id === value.data.uid ? <ButtonUserLogin /> : <ButtonUser id={props.id} user={value.data} data={props.data}/>}
            </div>
       {/* end buttton */}
       <ModalFollower follower={follower} openFollower={openFollower} ViewFollower={ViewFollower} />

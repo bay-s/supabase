@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import supabase from '../supabase-config'
 import akun from '../akun.jpg'
 import { Link } from 'react-router-dom'
 import timeDifference from './timestamp'
 import Avatar from './avatar'
 import CommentReplyCard from './comment-reply-card'
+import { AppContext } from '../App'
 
 
 
@@ -12,6 +13,7 @@ const CommentCard = (props) => {
     const [reply,setReply] = useState([])
     const [viewReply,setViewReply] = useState(false)
     const [deletes,SetDeletes] = useState(false)
+    const {value} = useContext(AppContext)
      useEffect(() => {
         getReplyComment()
     },[])
@@ -57,7 +59,7 @@ const DeleteComment = async (e) => {
 <div className='is-flex align-center is-flex-gap-sm px-4 mx-5 mb-3'>
 <span className='is-size-7 is-title has-text-grey-grey'>{timeDifference(props.item.created_at)}</span>
 <button className='btn-transparent is-small is-size-7 is-title' data-index={props.item.id} onClick={props.openReply }>Reply</button>
-<i className={props.user.uid === props.item.author_id ? "fa fa-trash-o is-size-7 has-text-danger is-clickable": 'hide'} data-id={props.item.id} aria-hidden="true" onClick={DeleteComment}></i>
+<i className={value.data.uid === props.item.author_id ? "fa fa-trash-o is-size-7 has-text-danger is-clickable": 'hide'} data-id={props.item.id} aria-hidden="true" onClick={DeleteComment}></i>
 </div>
 {/* --------------- */}
 <div className=''>

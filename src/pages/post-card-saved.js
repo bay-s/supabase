@@ -59,14 +59,33 @@ function PostCardSaved(props){
   
   
     return(
-<div className='column is-4'>
-{
   post.length < 1 ? "" : post.map((item ,index)=> {
-        return <PostCard data={item}  user={props.data} index={index}/>
-      })
-}      
+    return <div className="column is-4">      
+  <div className="card post-card is-relative">
+    <div class="card-image">
+      <figure className="image is-4by3">
+      <Link to={`/post/${item.id}`}>
+        <img className='is-clickable'
+         src={item.post_image ==='' ? "https://bulma.io/images/placeholders/1280x960.png" : item.post_image }
+        />
+        </Link>
+      </figure>
+    </div>
+   <div className='captions is-flex align-center is-flex-gap-md'>
+    <div className='is-flex align-center is-flex-gap-md'>
+   <i class="fa fa-heart has-text-white" aria-hidden="true"></i>
+   <span className='has-text-white is-size-6 is-bold'>{item.total_likes < 1 ? "0" : item.total_likes}</span>
+    </div>
+    <div className='is-flex align-center is-flex-gap-md'>
+   <i class="fa fa-comment has-text-white is-size-5" aria-hidden="true"></i>
+   <span className='has-text-white is-size-6 is-bold'>{item.total_comment < 1 ? "0" : item.total_comment}</span>
+    </div>
+   </div>
+</div>   
 </div>
+      })
     )
 }
 
 export default PostCardSaved;
+

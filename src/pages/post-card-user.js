@@ -34,6 +34,7 @@ function PostCardUser(props){
       setLoader(false)
     }
   }
+  
     return(
       loader ? <div className='column is-4'>
         <div class="card loading">

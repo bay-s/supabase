@@ -5,13 +5,13 @@ import ModalPostRight from './modal-post-detail-right'
 import { AppContext } from '../App'
 import PostCardUser from './post-card-user'
 
-
 const SinglePost = (props) => {
     const {id} = useParams();
     const [loader,setLoader] = useState(false)
     const [posts,setPosts] = useState([])
     const [UserData,setUserData] = useState([])
     const {value} = useContext(AppContext)
+
     useEffect(() => {
       const getSinglePost = async () => {
         const {data,err} = await supabase.from('post')
@@ -25,15 +25,7 @@ const SinglePost = (props) => {
       getSinglePost();
     },[posts])
 
-    
-
-
-
-
-
     const fetchData = async (uid) => {
-      console.log(uid);
-      console.log(posts.author_uid);
       const {data,error} = await supabase
       .from('users')
       .select()

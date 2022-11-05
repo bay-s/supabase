@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import supabase from '../supabase-config'
 import { Link, useParams } from 'react-router-dom'
 import ProfileInfo from './profile-user-info'
@@ -6,10 +6,12 @@ import PostCardUser from './post-card-user'
 import Banner from './banner'
 import BannerUser from './banner-user'
 import PostCardSaved from './post-card-saved'
+import { AppContext } from '../App'
 
 
 const Profile = (props) => {
 const {id} = useParams()
+const {value} = useContext(AppContext)
 const [tab,setTab] = useState('pictures')
 const [data,setData] = useState([])
 const [booMark,setBookMark] = useState([])
@@ -56,9 +58,9 @@ const openTab = (e) => {
     return(
 <div className='container m-4 mx-auto pt-4' >
 <div class="column is-10 box is-centered p-0 mx-auto">
-{id === props.user.uid ? <Banner  user={props.user} data={data}/> : <BannerUser user={props.user} data={data}/>}
+{id === value.data.uid ? <Banner  user={value.data} data={data}/> : <BannerUser user={value.data} data={data}/>}
 {/* OFILE INFO  */}
-<ProfileInfo key={id} data={data} id={id} user={props.user}/>
+<ProfileInfo key={id} data={data} id={id} />
 {/* END PROFILE INFO */}
     {/* tabs*/}
 <div className="tabs is-centered mx-5">
@@ -74,7 +76,7 @@ const openTab = (e) => {
       </a>
       </li>
       <li className={tab === 'saved' ? 'text-center is-active' : 'text-center'}>
-      <a class="navbar-item " data-tab='change' onClick={openTab }>
+      <a class={value.data.uid === id ? "navbar-item " : 'hide'} data-tab='change' onClick={openTab }>
        Saved
       </a>
       </li>

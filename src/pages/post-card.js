@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import akun from '../akun.jpg'
 import LikesCard from './likes-action'
@@ -9,13 +9,13 @@ import ModalPostDetail from './modal-post-detail'
 import timeDifference from './timestamp'
 import Avatar from './avatar'
 import Bookmarked from './bookmark'
+import { AppContext } from '../App'
 
 function PostCard(props){
-
+  const {value} = useContext(AppContext)
   const [UserData,setUserData] = useState([])
   const [loader,setLoader] = useState(true)
   const [openModal,setOpenModal] = useState(false)
-
   const id = props.data.author_uid
   useEffect(() => {
     const fetchData = async () => {
@@ -70,8 +70,8 @@ const openModalPost = e => {
         </div>
         <div className="card-content p-2">
           <div className="is-flex align-center justify-between px-2 py-2">
-          <LikesCard post={props.data} user={props.user}/>
-          <Bookmarked post={props.data} user={props.user}/>
+          <LikesCard post={props.data} user={value.data}/>
+          <Bookmarked post={props.data} user={value.data}/>
           </div>
           <div className="content p-0 p-2 is-flex is-flex-column">
             <span className='is-size-7 is-title'>{props.data.post_content}</span>

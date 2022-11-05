@@ -20,7 +20,7 @@ class ButtonFollow extends React.Component{
         }
         
         getIdFollower = async () => {
-          const id = this.props.user_login_id
+          const id = this.props.user.uid
           const { data, error } = await supabase
           .from('follow')
           .select()
@@ -102,7 +102,7 @@ class ButtonFollow extends React.Component{
       .from('follow')
       .insert([
         { 
-            follower_id:this.props.user_login_id,
+            follower_id:this.props.user.uid,
             user_id:this.props.id,
             detail:`${this.props.user.username} Has Follow ${this.props.data.username}`
         }
@@ -156,7 +156,7 @@ class ButtonFollow extends React.Component{
           .insert([
             { 
                 following_id:this.props.id,
-                user_id:this.props.user_login_id,
+                user_id:this.props.user.uid,
                 detail:`${this.props.user.username} Has Follow ${this.props.data.username}`
             }
           ])

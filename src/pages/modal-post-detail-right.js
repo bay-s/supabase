@@ -59,14 +59,14 @@ const ModalPostRight = (props) => {
     }
 
     const commentCard = comment.length < 1 ? <span className='mx-auto text-center'>No comment yet</span> : comment.map(item => {
-        return props.post.id === item.post_id ? <CommentCard item={item} openReply={openReply } user={props.user} /> : ""
+        return props.post.id === item.post_id ? <CommentCard item={item} openReply={openReply } /> : ""
          })
          
     return(
 <div className='column is-4 has-background-white p-0 is-flex is-flex-column h-100'>
 <header class="modal-card-head p-0 p-3 justify-between">
 <Avatar id={props.post.author_uid} />
-{props.user.uid === props.post.author_uid ? <i class="fa fa-trash-o has-text-danger is-bold is-clickable"  data-id={props.post.id} aria-hidden="true" onClick={DeletePost}></i> : 
+{value.data.uid === props.post.author_uid ? <i class="fa fa-trash-o has-text-danger is-bold is-clickable"  data-id={props.post.id} aria-hidden="true" onClick={DeletePost}></i> : 
 <button class="delete" aria-label="close"></button>
 }
 </header>
@@ -79,11 +79,11 @@ const ModalPostRight = (props) => {
 </div>
 <hr className='navbar-divider'/>
 <div className='is-flex is-flex-column p-2 align-start'>
-<LikesCard  post={props.post} user={props.user}/>
+<LikesCard  post={props.post} user={value.data}/>
 <span className='is-title is-size-7'>{props.post.total_likes} likes</span>
 <span className='is-title is-size-7'>{timeDifference(props.post.created_at)}</span>
 </div>
-{open ? <CommentReply post={props.post} id={id} comment={comment} user={props.user}/> : <CommentInput user={props.user} post={props.post}/>}
+{open ? <CommentReply post={props.post} id={id} comment={comment} user={value.data}/> : <CommentInput user={value.data} post={props.post}/>}
 </div>
     )
 }
